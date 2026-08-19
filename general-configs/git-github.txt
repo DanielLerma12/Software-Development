@@ -1,0 +1,56 @@
+
+--keywords and commands:
+
+git --version
+
+git init: create a repository
+git status: current status of the project
+git status -s: current status in a short version
+
+git add .: add everything in the folder (staging)
+
+git commit: save new version
+git commit -m "name": name or descryption for the version
+git commit --amend -m "name": change the name of current commit
+git reset --hard "commit": go to an specific commit and delete others after it
+git reset --soft "commit": go to an specific commit but conserve changes
+
+git log: history, record
+git log --oneline: commits in oneline short versions
+
+git checkout d4e5f6g: go to a specific branch
+git switch: go to a specific branch
+git branch (branch name): create new branch
+git branch: show branches
+git merge (branch name): merge the branches to main work, position is from main branch
+git branch -M (name): change branch name
+git branch -D (name): delete branch
+
+git remote add origin "URL": creates the merge between remote and local repository
+git remote -v: see details from the conexion
+git remote set-url origin "URL": change the cloud repository 
+git remote remove origin: Remove origin ref
+git push -u origin main: upload commits to cloud; u the first time allows to use "git push" instead of "git push -u origin main" in the future
+
+git tag "name": Create versions
+git tag -a "name" -m "Description": Create version with description
+git push origin "tag name": Upload tags to cloud
+
+git clone "URL": Clone repos
+
+git mv "React Test Projects/01-twitter-follow-card" "projects/01-twitter-follow-card-p": Change folder name 
+
+----------------------------------------------
+
+--notes:
+
+-repository: folder with version history
+
+-staging: select and prepare the specific files that will be part of your next version
+
+-HEAD: where the work is located in the moment
+
+-git identifies commits with automatic ID number (Hash(digital footprint)) or the message-descryption
+
+
+

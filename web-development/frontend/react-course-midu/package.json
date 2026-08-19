@@ -1,0 +1,25 @@
+{
+  "name": "react-course-midu",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "projects/01-twitter-follow-card",
+    "projects/01b-calculator",
+    "projects/02-tic-tac-toe",
+    "projects/02b-follow-the-square",
+    "projects/03-mouse-follower",
+    "projects/04-cat-api",
+    "projects/05-movie-finder",
+    "projects/06-shopping-cart",
+    "projects/07-react-router-fruitgame",
+    "projects/08-ts-todo-app",
+    "projects/09-ts-google-translate-clone",
+    "projects/10-ts-react-query",
+    "projects/10b-ts-react-query-mutate",
+    "projects/11-zustand-javascript-quiz"
+  ],
+  "dependencies": {
+    "vite": "^8.1.5"
+  }
+}

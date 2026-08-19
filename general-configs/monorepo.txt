@@ -1,0 +1,25 @@
+
+--npm workspace:
+
+-create package.json
+
+-package.json root folder:
+
+{
+  "name": "project-name",
+  "private": true,"
+  "workspaces": ["frontend", "backend"]
+}
+
+-scripts for running projects from root:
+
+  "scripts": {
+    "dev:backend": "npm run watch --workspace=backend",
+    "dev:frontend": "npm run dev --workspace=frontend",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+
+-create git files from root
+-remove gitignore, package-lock.json from inner folders
+
+

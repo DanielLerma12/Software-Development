@@ -1,0 +1,10 @@
+
+-Install just-debounce-it:
+
+npm install just-debounce-it -E
+
+----------------------------------------------
+
+-Install Google Generative Ai package:
+
+npm install @google/generative-ai

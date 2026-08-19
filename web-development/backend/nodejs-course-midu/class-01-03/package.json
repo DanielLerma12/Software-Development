@@ -1,0 +1,27 @@
+{
+  "name": "nodejs-course-midu",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev:1": "node --watch class-02/01-http.js",
+    "dev:2": "node --watch class-02/pokemon/02-routing.js",
+    "dev:3": "node --watch class-02/03-express.js",
+    "dev:4": "node --watch class-03/app.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "2.8.6",
+    "express": "5.2.1",
+    "picocolors": "^1.1.1",
+    "zod": "4.4.3"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "eslint": "^10.7.0",
+    "globals": "^17.7.0"
+  }
+}

@@ -1,0 +1,21 @@
+
+### POST
+POST http://localhost:3000/
+Content-Type: application/json
+
+{
+    "id": 11,
+    "content": "Item 11"
+}
+
+### PATCH
+PATCH http://localhost:3000/10
+Content-Type: application/json
+
+{
+    "id": "diez",
+    "content": "Item diez"
+}
+
+### DELETE
+DELETE http://localhost:3000/10

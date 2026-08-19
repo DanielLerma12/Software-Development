@@ -1,0 +1,214 @@
+/* CSS for created elements in Main grid*/
+.a-srch-rlt-main-cont {
+  width: 100%;
+  max-width: 1140px;
+
+  padding: 15rem 10px;
+  gap: 50px;
+
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.a-srch-rlt-dad-cont {
+  width: 100%;
+  max-width: 1140px;
+
+  gap: 1rem;
+
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.a-srch-rlt-img-cont {
+  width: 225px;
+  height: 335px;
+}
+
+.a-srch-rlt-img-cont img {
+  width: 100%;
+  height: 100%;
+
+  overflow: hidden;
+  border-radius: 5px;
+
+  object-fit: cover;
+  display: block;
+}
+
+.a-srch-rlt-info-cont {
+  max-width: 300px;
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.a-srch-rlt-tdata-cont {
+  display: flex;
+  flex-direction: column;
+}
+
+.a-srch-rlt-title-cont {
+  padding-top: 1rem;
+
+  color: white;
+  font-weight: 700;
+  font-size: 18px;
+  font-family: "Roboto", sans-serif;
+  text-align: center;
+}
+
+.a-srch-rlt-extdata-cont {
+  padding-top: 32px;
+  padding-bottom: 32px;
+  gap: 5px;
+
+  color: white;
+  text-align: center;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.a-srch-rlt-extdata-cont p {
+  color: white;
+  font-size: 13px;
+  font-family: "Roboto", sans-serif;
+}
+
+.a-srch-rlt-reg-cont {
+  flex-grow: 1;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: flex-start;
+}
+
+.a-srch-rlt-reg-lbl {
+  padding: 5px;
+
+  background-color: #2b2f36;
+  border-radius: 5px;
+}
+
+.a-srch-rlt-reg-lbl label {
+  font-size: 13px;
+  color: white;
+  font-family: "Roboto", sans-serif;
+  font-weight: 700;
+}
+
+.a-srch-rlt-logscrdes-cont {
+  max-width: 563px;
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.a-srch-rlt-logscr-cont {
+  max-width: 563px;
+  width: 100%;
+  max-height: 87px;
+  height: 100%;
+
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.a-srch-rlt-scr-cont {
+  gap: 15px;
+  width: 80px;
+  padding: 5px;
+
+  font-family: "Roboto", sans-serif;
+  font-weight: 700;
+  border-radius: 5px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.a-srch-rlt-scrlbl-cont p {
+  color: white;
+  font-size: 18px;
+}
+
+.a-srch-rlt-scrnum-cont {
+  width: 80px;
+
+  border: none;
+  border-radius: 5px;
+  background-color: #00275e;
+  color: white;
+  font-size: 14px;
+  text-align: center;
+}
+
+.a-srch-rlt-log-btn {
+  height: 36px;
+  width: 80px;
+
+  border: none;
+  border-radius: 5px;
+  background-color: #00275e;
+  color: white;
+  font-family: "Roboto", sans-serif;
+  font-weight: 700;
+
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.a-srch-rlt-log-btn:hover {
+  background-color: #003a8c;
+}
+
+.a-srch-rlt-desc-cont {
+  max-width: 563px;
+  width: 100%;
+  max-height: 232px;
+  height: 100%;
+
+  padding-top: 3rem;
+  padding-left: 10px;
+  padding-right: 10px;
+
+  overflow-y: auto;
+
+  color: white;
+  font-size: 13px;
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  text-align: justify;
+}
+
+.a-srch-rlt-desc-cont::-webkit-scrollbar {
+  width: 10px;
+}
+
+.a-srch-rlt-desc-cont::-webkit-scrollbar-track {
+  background: #2b2f36;
+  border-radius: 5px;
+}
+
+.a-srch-rlt-desc-cont::-webkit-scrollbar-thumb {
+  background: #00275e;
+  border-radius: 5px;
+}
+
+.a-srch-rlt-desc-cont::-webkit-scrollbar-thumb:hover {
+  background: #003a8c;
+}
+
+.a-srch-rlt-desc-cont p {
+  max-width: 563px;
+  width: 100%;
+  max-height: 232px;
+  height: 100%;
+}
+
+/* Final Edition */
