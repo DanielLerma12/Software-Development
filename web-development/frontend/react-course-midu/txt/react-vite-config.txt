@@ -1,0 +1,69 @@
+
+-Vite initialization:
+
+cd folder
+npm init -y : Create package.json
+npm create vite@latest: Init vite project
+project name
+select framework
+select variant
+npm install
+npm run dev
+
+----------------------------------------------
+
+-Open browser from run dev on vite.config.js:
+
+export default defineConfig({
+  plugins: [react(), babel({ presets: [reactCompilerPreset()] })],
+  server: {
+    open: true,
+  },
+});
+
+-Include server line
+
+----------------------------------------------
+
+--Vite@Test initialization:
+
+Install dependencies: npm install vitest happy-dom @testing-library/react @testing-library/user-event -D
+
+-Config vite.config:
+
+import { defineConfig } from "vitest/config";
+import react, { reactCompilerPreset } from "@vitejs/plugin-react";
+
+// https://vite.dev/config/
+export default defineConfig({
+  plugins: [react()],
+  server: {
+    open: true,
+  },
+  test: { environment: "happy-dom" },
+});
+
+-Config package.json:
+
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "lint": "eslint .",
+    "preview": "vite preview",
+    "test": "vitest"
+  },
+
+----------------------------------------------
+
+-Handling useMemo dependencies changing error, babel compiler vite.config:
+
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react";
+
+// https://vite.dev/config/
+export default defineConfig({
+  plugins: [react()],
+  server: {
+    open: true,
+  },
+});

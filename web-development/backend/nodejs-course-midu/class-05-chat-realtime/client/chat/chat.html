@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="index.css" />
+
+    <title>MyChat</title>
+
+    <!--cliente de socket.io-->
+  </head>
+  <body>
+    <section id="chat">
+      <ul id="messages"></ul>
+      <div id="typing">
+        <p id="typing-p">user is typing...</p>
+      </div>
+
+      <form id="form">
+        <input
+          type="text"
+          name="message"
+          id="input"
+          placeholder="Type a message"
+          autocomplete="off"
+        />
+        <button type="submit">➤</button>
+      </form>
+      <button id="logout">➜]</button>
+    </section>
+
+    <script src="https://chat-socketio-jtuc.onrender.com/socket.io/socket.io.js"></script>
+    <script type="module" src="script.js"></script>
+  </body>
+</html>

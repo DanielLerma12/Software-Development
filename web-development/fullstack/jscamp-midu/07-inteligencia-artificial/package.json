@@ -1,0 +1,26 @@
+{
+  "name": "07-inteligencia-artificial",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "example": "examples"
+  },
+  "workspaces": [
+    "frontend",
+    "backend"
+  ],
+  "scripts": {
+    "dev:backend": "npm run watch --workspace=backend",
+    "dev:frontend": "npm run dev --workspace=frontend",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "@ai-sdk/google": "^4.0.44",
+    "ai": "^7.0.66"
+  }
+}

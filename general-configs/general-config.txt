@@ -1,0 +1,10 @@
+  
+  --package.json scripts examples:
+  
+  "scripts": {
+    "start:prisma": "node server-with-prisma.js",
+    "start:json": "node server-with-json.js",
+    "dev": "node --watch server-with-prisma.js",
+    "dev:2": "node --watch server-with-json.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },

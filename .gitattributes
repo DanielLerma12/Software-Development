@@ -1,0 +1,18 @@
+# Dependencies
+node_modules/** linguist-vendored
+
+# Build output
+dist/** linguist-generated=true
+dist-ssr/** linguist-generated=true
+
+# Test output
+playwright-report/** linguist-generated=true
+test-results/** linguist-generated=true
+
+# Local configuration
+.env linguist-vendored
+.env.local linguist-vendored
+
+# Editor files
+.vscode/** linguist-vendored
+.idea/** linguist-vendored

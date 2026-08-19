@@ -1,0 +1,36 @@
+{
+  "name": "class-04-rest-api-deploy",
+  "version": "1.0.0",
+  "description": "",
+  "license": "ISC",
+  "author": "",
+  "type": "module",
+  "main": "app.js",
+  "scripts": {
+    "start:prisma": "node server-with-prisma.js",
+    "start:json": "node server-with-json.js",
+    "dev": "node --watch server-with-prisma.js",
+    "dev:2": "node --watch server-with-json.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "prisma": {
+    "seed": "node prisma/seed.js"
+  },
+  "dependencies": {
+    "@prisma/adapter-pg": "^7.9.1",
+    "@prisma/client": "^7.9.1",
+    "cors": "2.8.6",
+    "dotenv": "^17.4.2",
+    "express": "5.2.1",
+    "mysql2": "^3.23.2",
+    "pg": "^8.22.0",
+    "picocolors": "1.1.1",
+    "prisma": "^7.9.1",
+    "zod": "4.4.3"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "eslint": "^10.7.0",
+    "globals": "^17.7.0"
+  }
+}

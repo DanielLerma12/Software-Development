@@ -1,0 +1,42 @@
+### Recuperar todas las películas
+GET http://localhost:1234/movies
+
+### Recuperar una película por id
+GET http://localhost:1234/movies/6a360a18-c645-4b47-9a7b-2a71babbf3e0
+
+### Recuperar una película por un género
+GET http://localhost:1234/movies?genre=crime
+
+### Crear una película con POST
+
+POST http://localhost:1234/movies/
+Content-Type: application/json
+
+{
+    "title": "Mother",
+    "year": 2017,
+    "director": "Darren Aronofsky",
+    "duration": 156,
+    "poster": "https://a.ltrbxd.com/resized/film-poster/3/1/6/3/1/1/316311-mother--0-1000-0-1500-crop.jpg?v=399e8950fd",
+    "genre": ["Drama", "Crime"],
+    "rate": 7.8
+}
+
+### Actualizar una película
+PATCH http://localhost:1234/movies/e624b441-d4e9-43a8-9ff4-3fa7db1d6cfe
+Content-Type: application/json
+
+{
+
+    "title": "Mother",
+    "year": 2017,
+    "director": "Darren Aronofsky",
+    "duration": 156,
+    "poster": "https://a.ltrbxd.com/resized/film-poster/3/1/6/3/1/1/316311-mother--0-1000-0-1500-crop.jpg?v=399e8950fd",
+    "genre": ["Drama", "Crime"],
+    "rate": 8.0
+
+}
+
+### Borrar una película
+DELETE  http://localhost:1234/movies/e624b441-d4e9-43a8-9ff4-3fa7db1d6cfe

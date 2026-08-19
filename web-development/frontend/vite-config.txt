@@ -1,0 +1,16 @@
+
+--install:
+
+npm create vite@latest
+
+-initialization for different configs
+
+-vite.config.js file for Js Vanilla:
+
+import { defineConfig } from "vite";
+
+export default defineConfig({
+  server: {
+    open: true,
+  },
+});
