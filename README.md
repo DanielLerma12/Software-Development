@@ -4,21 +4,6 @@ Courses, projects, and reference material from various instructors focused on so
 
 ---
 
-## [General Configs](general-configs/)
-
-Reference notes and cheat sheets for common dev tooling.
-
-| File                                                               | Description                                                                    |
-| ------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
-| [ESLint Config](general-configs/eslint-config.txt)                 | ESLint installation and configuration for JS (Node/Browser)                    |
-| [General Config](general-configs/general-config.txt)               | `package.json` scripts examples (Prisma, JSON, dev modes)                      |
-| [Terminal Commands](general-configs/general-terminal-commands.txt) | Basic terminal commands (`mkdir`, `rm`)                                        |
-| [Git & GitHub](general-configs/git-github.txt)                     | Git/GitHub cheat sheet (init, commit, branch, merge, remote, push, tag, clone) |
-| [Monorepo](general-configs/monorepo.txt)                           | npm workspaces / monorepo setup                                                |
-| [npm/pnpm Init](general-configs/npm-pnpm-init.txt)                 | `npm`/`pnpm` init, `add` vs `install`                                          |
-
----
-
 ## [Languages](languages/)
 
 ### [JavaScript — Brais Moure](languages/javascript-brais-moure/)
@@ -118,7 +103,7 @@ Complete 10-module bootcamp covering the full stack.
 
 ### [OpenCode Course — Midudev](ai-engineering/opencode-midu/)
 
-OpenCode as an AI coding assistant: agents, skills, commands. Includes a vanilla HTML/CSS/JS dinosaur game project and OpenCode configuration (`.opencode/`).
+OpenCode course exercises by Midudev. Includes a vanilla HTML/CSS/JS Dino Runner game (Canvas + Web Audio API), keyboard shortcuts reference (`txt/config.txt`), and documentation (`AGENTS.md`, `SECURITY.md`).
 
 ---
 
