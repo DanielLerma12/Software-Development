@@ -82,7 +82,7 @@ Classic Tetris game. Vanilla JS + Vite, with audio assets.
 
 ### [Fullstack — JSCamp Bootcamp — Midudev](web-development/fullstack/jscamp-midu/)
 
-Complete 10-module bootcamp covering the full stack.
+Complete 9-module bootcamp covering the full stack.
 
 | Module                                                                                     | Description                                        | Key Technologies                         |
 | ------------------------------------------------------------------------------------------ | -------------------------------------------------- | ---------------------------------------- |
@@ -93,17 +93,8 @@ Complete 10-module bootcamp covering the full stack.
 | [05: Testing](web-development/fullstack/jscamp-midu/05-testing/)                           | E2E testing with Playwright and AI-powered testing | Playwright, Stagehand                    |
 | [06: TypeScript](web-development/fullstack/jscamp-midu/06-typescript/)                     | TS fundamentals, functions, interfaces & types     | TypeScript                               |
 | [07: AI Integration](web-development/fullstack/jscamp-midu/07-inteligencia-artificial/)    | AI-powered features with Google AI SDK             | Google AI SDK, Vercel AI, React, Express |
-| [08: SQL](web-development/fullstack/jscamp-midu/08-sql/)                                   | Database layer with TypeScript backend             | SQL, TypeScript, pnpm                    |
-| [09: CI/CD](web-development/fullstack/jscamp-midu/09-ci-cd/)                               | Continuous integration & deployment pipelines      | Node.js, React, pnpm workspaces          |
-| [10: Docker](web-development/fullstack/jscamp-midu/10-docker/)                             | 8 progressive exercises: basics to Vercel deploy   | Docker, Docker Compose, Go, Python Flask |
-
----
-
-## [AI Engineering](ai-engineering/)
-
-### [OpenCode Course — Midudev](ai-engineering/opencode-midu/)
-
-OpenCode course exercises by Midudev. Includes a vanilla HTML/CSS/JS Dino Runner game (Canvas + Web Audio API), keyboard shortcuts reference (`txt/config.txt`), and documentation (`AGENTS.md`, `SECURITY.md`).
+| [08: OpenCode](web-development/fullstack/jscamp-midu/08-opencode/)                         | Vanilla HTML/CSS/JS Dino Runner game (Canvas + Web Audio API) | HTML, CSS, JS, Canvas, Web Audio API    |
+| [09: Docker](web-development/fullstack/jscamp-midu/09-docker/)                             | 7 progressive exercises: basics to Docker Compose  | Docker, Docker Compose                   |
 
 ---
 
