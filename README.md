@@ -61,6 +61,10 @@ Practice project using the unofficial MyAnimeList API (Jikan). Vanilla JS, multi
 
 Classic Tetris game. Vanilla JS + Vite, with audio assets.
 
+#### [Next.js Course — Midudev](web-development/frontend/nextjs-course-midu/)
+
+In progress — currently contains course notes and setup commands (`create-next-app`).
+
 ---
 
 ### [Backend](web-development/backend/)
@@ -80,21 +84,21 @@ Classic Tetris game. Vanilla JS + Vite, with audio assets.
 
 ---
 
-### [Fullstack — JSCamp Bootcamp — Midudev](web-development/fullstack/jscamp-midu/)
+### [Fullstack — JSCamp Bootcamp — Midudev](web-development/fullstack/jscamp-course-midu/)
 
 Complete 9-module bootcamp covering the full stack.
 
-| Module                                                                                     | Description                                        | Key Technologies                         |
-| ------------------------------------------------------------------------------------------ | -------------------------------------------------- | ---------------------------------------- |
-| [01: HTML/CSS/JS DOM](web-development/fullstack/jscamp-midu/01-html-css-javascript%20dom/) | HTML/CSS/JS fundamentals, DOM manipulation         | HTML, CSS, JS, Fetch API                 |
-| [02: Router & Zustand](web-development/fullstack/jscamp-midu/02-router-and-zustand/)       | Job board app with routing and state management    | React, React Router, Zustand             |
-| [03: Node.js](web-development/fullstack/jscamp-midu/03-node/)                              | CLI application, file management                   | Node.js                                  |
-| [04: Express](web-development/fullstack/jscamp-midu/04-express/)                           | REST API with MVC architecture                     | Express, MVC                             |
-| [05: Testing](web-development/fullstack/jscamp-midu/05-testing/)                           | E2E testing with Playwright and AI-powered testing | Playwright, Stagehand                    |
-| [06: TypeScript](web-development/fullstack/jscamp-midu/06-typescript/)                     | TS fundamentals, functions, interfaces & types     | TypeScript                               |
-| [07: AI Integration](web-development/fullstack/jscamp-midu/07-inteligencia-artificial/)    | AI-powered features with Google AI SDK             | Google AI SDK, Vercel AI, React, Express |
-| [08: OpenCode](web-development/fullstack/jscamp-midu/08-opencode/)                         | Vanilla HTML/CSS/JS Dino Runner game (Canvas + Web Audio API) | HTML, CSS, JS, Canvas, Web Audio API    |
-| [09: Docker](web-development/fullstack/jscamp-midu/09-docker/)                             | 7 progressive exercises: basics to Docker Compose  | Docker, Docker Compose                   |
+| Module                                                                                              | Description                                        | Key Technologies                         |
+| --------------------------------------------------------------------------------------------------- | -------------------------------------------------- | ---------------------------------------- |
+| [01: HTML/CSS/JS DOM](web-development/fullstack/jscamp-course-midu/01-html-css-javascript%20dom/)   | HTML/CSS/JS fundamentals, DOM manipulation         | HTML, CSS, JS, Fetch API                 |
+| [02: Router & Zustand](web-development/fullstack/jscamp-course-midu/02-router-and-zustand/)         | Job board app with routing and state management    | React, React Router, Zustand             |
+| [03: Node.js](web-development/fullstack/jscamp-course-midu/03-node/)                                | CLI application, file management                   | Node.js                                  |
+| [04: Express](web-development/fullstack/jscamp-course-midu/04-express/)                             | REST API with MVC architecture                     | Express, MVC                             |
+| [05: Testing](web-development/fullstack/jscamp-course-midu/05-testing/)                             | E2E testing with Playwright and AI-powered testing | Playwright, Stagehand                    |
+| [06: TypeScript](web-development/fullstack/jscamp-course-midu/06-typescript/)                       | TS fundamentals, functions, interfaces & types     | TypeScript                               |
+| [07: AI Integration](web-development/fullstack/jscamp-course-midu/07-inteligencia-artificial/)      | AI-powered features with Google AI SDK             | Google AI SDK, Vercel AI, React, Express |
+| [08: OpenCode](web-development/fullstack/jscamp-course-midu/08-opencode/)                           | Vanilla HTML/CSS/JS Dino Runner game (Canvas + Web Audio API) | HTML, CSS, JS, Canvas, Web Audio API    |
+| [09: Docker](web-development/fullstack/jscamp-course-midu/09-docker/)                               | 7 progressive exercises: basics to Docker Compose  | Docker, Docker Compose                   |
 
 ---
 

@@ -1,0 +1,8 @@
+
+--install:
+
+npx shadcn@latest init
+
+--install components:
+
+npx shadcn@latest add card label input button

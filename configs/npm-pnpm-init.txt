@@ -4,8 +4,6 @@
 npm init -y
 pnpm init
 
-----------------------------------------------
-
 --add and install differences:
 
 npm or pnpm add name // install new dependencie
