@@ -1,0 +1,22 @@
+
+--install:
+
+npx create-next-app@latest
+
+--configs:
+
+-activate turbopack:
+
+-react compiler:
+
+npm install babel-plugin-react-compiler@latest
+
+next.config.ts:
+
+const nextConfig: NextConfig = {
+  reactCompiler: true,
+  experimental: {
+    turbopackFileSystemCacheForDev: true,
+  },
+};
+
