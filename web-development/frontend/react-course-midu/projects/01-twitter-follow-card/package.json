@@ -1,5 +1,5 @@
 {
-  "name": "00-hola-mundo",
+  "name": "01-twitter-follow-card",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -19,9 +19,7 @@
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react": "^6.0.1",
-    "babel-plugin-react-compiler": "^1.0.0",
     "eslint-plugin-react-hooks": "^7.1.1",
-    "eslint-plugin-react-refresh": "^0.5.2",
-    "vite": "^8.0.12"
+    "eslint-plugin-react-refresh": "^0.5.2"
   }
 }
