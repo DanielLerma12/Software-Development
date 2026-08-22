@@ -10,7 +10,7 @@ app.use(express.json());
 app.use(
   cors({
     origin: (origin, callback) => {
-      const ACCEPTED_ORIGINS = ["http://localhost:5173"];
+      const ACCEPTED_ORIGINS = ["http://localhost:5175"];
 
       if (ACCEPTED_ORIGINS.includes(origin)) {
         return callback(null, true);

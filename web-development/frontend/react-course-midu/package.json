@@ -21,5 +21,8 @@
   ],
   "dependencies": {
     "vite": "^8.1.5"
+  },
+  "devDependencies": {
+    "babel-plugin-react-compiler": "^1.0.0"
   }
 }

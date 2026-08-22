@@ -3,7 +3,7 @@ import "./App.css";
 
 const cuadricula = [
   "C",
-  "<--",
+  "<-",
   ".",
   "+",
   7,
@@ -37,7 +37,6 @@ function App() {
     } else if (cuadricula[index] === "<-") {
       nuevoValor.current = valor.slice(0, valor.length - 1);
       if (nuevoValor.current === "") {
-        console.log("hola");
         prevValor.current = "";
         setValor(nuevoValor.current);
       } else {
