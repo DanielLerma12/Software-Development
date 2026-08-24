@@ -1,0 +1,679 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ==========================================
+   TAILWIND V4 THEME
+   ========================================== */
+
+@theme {
+  /*
+   * Custom colors used by the original project.
+   *
+   * If your old tailwind.config.ts defined different
+   * values for these colors, replace them here.
+   */
+  --color-primary-50: #f5f3ff;
+
+  --color-grey-50: #f9fafb;
+  --color-grey-300: #d1d5db;
+  --color-grey-500: #6b7280;
+
+  /*
+   * Tailwind's default gray colors are already available
+   * in v4, so bg-gray-300 continues to work.
+   */
+}
+
+/* ==========================================
+   BASE
+   ========================================== */
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 84% 4.9%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 84% 4.9%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
+
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+  }
+
+  * {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    scroll-behavior: smooth;
+    @apply border-border outline-ring/50;
+  }
+
+  body {
+    font-family: var(--font-schibsted-grotesk);
+    @apply bg-background text-foreground;
+  }
+  html {
+    @apply font-sans;
+  }
+}
+
+/* ==========================================
+   CUSTOM UTILITIES
+   ========================================== */
+
+/* ------------------------------------------
+   LAYOUT
+   ------------------------------------------ */
+
+@utility wrapper {
+  width: 100%;
+  max-width: 80rem;
+  padding: 1.25rem;
+
+  @media (min-width: 768px) {
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+  }
+
+  @media (min-width: 1024px) {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  @media (min-width: 1280px) {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+@utility flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@utility flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* ==========================================
+   TYPOGRAPHY
+   ========================================== */
+
+/* 64 */
+
+@utility h1-bold {
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 48px;
+
+  @media (min-width: 1024px) {
+    font-size: 48px;
+    line-height: 60px;
+  }
+
+  @media (min-width: 1280px) {
+    font-size: 58px;
+    line-height: 74px;
+  }
+}
+
+/* 40 */
+
+@utility h2-bold {
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 40px;
+
+  @media (min-width: 1024px) {
+    font-size: 36px;
+    line-height: 44px;
+  }
+
+  @media (min-width: 1280px) {
+    font-size: 40px;
+    line-height: 48px;
+  }
+}
+
+@utility h2-medium {
+  font-weight: 500;
+  font-size: 32px;
+  line-height: 40px;
+
+  @media (min-width: 1024px) {
+    font-size: 36px;
+    line-height: 44px;
+  }
+
+  @media (min-width: 1280px) {
+    font-size: 40px;
+    line-height: 48px;
+  }
+}
+
+/* 36 */
+
+@utility h3-bold {
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 36px;
+
+  @media (min-width: 768px) {
+    font-size: 36px;
+    line-height: 44px;
+  }
+}
+
+@utility h3-medium {
+  font-weight: 500;
+  font-size: 28px;
+  line-height: 36px;
+
+  @media (min-width: 768px) {
+    font-size: 36px;
+    line-height: 44px;
+  }
+}
+
+/* 32 */
+
+@utility h4-medium {
+  font-weight: 500;
+  font-size: 32px;
+  line-height: 40px;
+}
+
+/* 28 */
+
+@utility h5-bold {
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 36px;
+}
+
+/* ==========================================
+   PARAGRAPHS
+   ========================================== */
+
+/* 24 */
+
+@utility p-bold-24 {
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 36px;
+}
+
+@utility p-medium-24 {
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 36px;
+}
+
+@utility p-regular-24 {
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 36px;
+}
+
+/* 20 */
+
+@utility p-bold-20 {
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 30px;
+  letter-spacing: 2%;
+}
+
+@utility p-semibold-20 {
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 30px;
+  letter-spacing: 2%;
+}
+
+@utility p-medium-20 {
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 30px;
+}
+
+@utility p-regular-20 {
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 30px;
+  letter-spacing: 2%;
+}
+
+/* 18 */
+
+@utility p-semibold-18 {
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 28px;
+  letter-spacing: 2%;
+}
+
+@utility p-medium-18 {
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 28px;
+}
+
+@utility p-regular-18 {
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 28px;
+  letter-spacing: 2%;
+}
+
+/* 16 */
+
+@utility p-bold-16 {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+@utility p-medium-16 {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+@utility p-regular-16 {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+/* 14 */
+
+@utility p-semibold-14 {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+@utility p-medium-14 {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+@utility p-regular-14 {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+/* 12 */
+
+@utility p-medium-12 {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 20px;
+}
+
+/* ==========================================
+   TEXT EFFECTS
+   ========================================== */
+
+@utility gradient-text {
+  background: linear-gradient(
+    to right,
+    #80e6d4 0%,
+    #b5f2e8 40%,
+    #e0faf4 70%,
+    #ffffff 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+@utility glow-text {
+  filter: drop-shadow(0 0 15px rgba(128, 230, 212, 0.3))
+    drop-shadow(0 0 30px rgba(128, 230, 212, 0.15));
+}
+
+@utility inner-shadow-text {
+  text-shadow:
+    0 -2px 3px rgba(0, 0, 0, 0.6),
+    0 2px 3px rgba(0, 0, 0, 0.4);
+}
+
+/* ==========================================
+    SHADCN OVERRIDES
+    ========================================== */
+
+@utility select-field {
+  width: 100%;
+  height: 54px;
+  background-color: var(--color-grey-50);
+  border-radius: 9999px;
+  padding: 0.75rem 1.25rem;
+  border: none;
+
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+
+  &:focus {
+    outline: none;
+    box-shadow: none;
+  }
+
+  &:focus-visible {
+    outline: none;
+    box-shadow: none;
+  }
+
+  &::placeholder {
+    color: var(--color-grey-500);
+  }
+}
+
+@utility input-field {
+  height: 54px;
+  background-color: var(--color-grey-50);
+  border-radius: 9999px;
+  padding: 0.75rem 1rem;
+  border: none;
+
+  &:focus {
+    outline: none;
+    box-shadow: none;
+  }
+
+  &:focus-visible {
+    outline: none;
+    box-shadow: none;
+  }
+
+  &::placeholder {
+    color: var(--color-grey-500);
+  }
+}
+
+@utility textarea {
+  display: flex;
+  flex: 1;
+
+  background-color: var(--color-grey-50);
+
+  padding: 0.75rem 1.25rem;
+
+  border: none;
+
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+
+  &:focus {
+    outline: none;
+    box-shadow: none;
+  }
+
+  &:focus-visible {
+    outline: none;
+    box-shadow: none;
+  }
+
+  &::placeholder {
+    color: var(--color-grey-500);
+  }
+}
+
+@utility button {
+  height: 54px;
+  border-radius: 9999px;
+
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+@utility select-item {
+  cursor: pointer;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+
+  &:focus {
+    background-color: var(--color-primary-50);
+  }
+}
+
+@utility toggle-switch {
+  background-color: #d1d5db !important;
+}
+
+/* ==========================================
+   FILTERS
+   ========================================== */
+
+.filter-grey {
+  filter: brightness(0) saturate(100%) invert(47%) sepia(0%) saturate(217%)
+    hue-rotate(32deg) brightness(98%) contrast(92%);
+}
+
+/* ==========================================
+   CLERK STYLES
+   ========================================== */
+
+.cl-logoImage {
+  height: 38px;
+}
+
+.cl-userButtonBox {
+  flex-direction: row-reverse;
+}
+
+.cl-userButtonOuterIdentifier {
+  font-size: 16px;
+}
+
+.cl-userButtonPopoverCard {
+  right: 4px !important;
+}
+
+.cl-formButtonPrimary:hover,
+.cl-formButtonPrimary:focus,
+.cl-formButtonPrimary:active {
+  background-color: #705cf7;
+}
+
+/* ==========================================
+   REACT-DATEPICKER STYLES
+   ========================================== */
+
+.datePicker {
+  width: 100%;
+}
+
+.react-datepicker__input-container input {
+  width: 100%;
+  margin-left: 16px;
+  background-color: transparent;
+  outline: none;
+}
+
+.react-datepicker__day--selected {
+  background-color: #624cf5 !important;
+  color: #ffffff !important;
+  border-radius: 4px;
+}
+
+.react-datepicker__time-list-item--selected {
+  background-color: #624cf5 !important;
+}
+
+@theme inline {
+  --font-heading: var(--font-schibsted-grotesk);
+  --font-sans: var(--font-schibsted-grotesk);
+  --font-mono: var(--font-martian-mono);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --color-foreground: var(--foreground);
+  --color-background: var(--background);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+:root {
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.145 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.145 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.145 0 0);
+  --primary: oklch(0.205 0 0);
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.97 0 0);
+  --secondary-foreground: oklch(0.205 0 0);
+  --muted: oklch(0.97 0 0);
+  --muted-foreground: oklch(0.556 0 0);
+  --accent: oklch(0.97 0 0);
+  --accent-foreground: oklch(0.205 0 0);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: oklch(0.922 0 0);
+  --input: oklch(0.922 0 0);
+  --ring: oklch(0.708 0 0);
+  --chart-1: oklch(0.87 0 0);
+  --chart-2: oklch(0.556 0 0);
+  --chart-3: oklch(0.439 0 0);
+  --chart-4: oklch(0.371 0 0);
+  --chart-5: oklch(0.269 0 0);
+  --radius: 0.625rem;
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: oklch(0.205 0 0);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: oklch(0.145 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.708 0 0);
+}
+
+.dark {
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.205 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.205 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.922 0 0);
+  --primary-foreground: oklch(0.205 0 0);
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: oklch(0.269 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.556 0 0);
+  --chart-1: oklch(0.87 0 0);
+  --chart-2: oklch(0.556 0 0);
+  --chart-3: oklch(0.439 0 0);
+  --chart-4: oklch(0.371 0 0);
+  --chart-5: oklch(0.269 0 0);
+  --sidebar: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.556 0 0);
+}

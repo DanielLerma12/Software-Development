@@ -5,9 +5,7 @@ npx create-next-app@latest
 
 --configs:
 
--activate turbopack:
-
--react compiler:
+-activate turbopack and react compiler:
 
 npm install babel-plugin-react-compiler@latest
 
@@ -19,4 +17,13 @@ const nextConfig: NextConfig = {
     turbopackFileSystemCacheForDev: true,
   },
 };
+
+--notes:
+
+-Use forbidden and unauthorized functions for login permissions or something
+-Use Suspense from React to show a loading state for a specific part of the UI,
+while loading.tsx handles the loading state at the route level
+-use "use cache" with cacheLife to cache functions, pages,
+and components in Next.js, improving performance by reusing cached data instead of rendering or fetching it again
+
 
