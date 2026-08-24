@@ -1,6 +1,7 @@
 import Link from "next/link";
 
-const Users = () => {
+const Users = async () => {
+  await new Promise((r) => setTimeout(r, 3000));
   console.log("hi, from users");
   return (
     <div>
