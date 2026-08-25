@@ -1,0 +1,61 @@
+### Create Event
+POST http://localhost:3000/api/events
+Content-Type: multipart/form-data; boundary=WebAppBoundary
+
+--WebAppBoundary
+Content-Disposition: form-data; name="title"
+
+Cloud Next 2026
+--WebAppBoundary
+Content-Disposition: form-data; name="description"
+
+Google's premier cloud computing event, showcasing innovations in AI, infrastructure, and enterprise solutions.
+--WebAppBoundary
+Content-Disposition: form-data; name="overview"
+
+Cloud Next 2026 highlights the latest in cloud-native development, Kubernetes, AI, and enterprise scalability.
+--WebAppBoundary
+Content-Disposition: form-data; name="venue"
+
+Moscone Center
+--WebAppBoundary
+Content-Disposition: form-data; name="location"
+
+San Francisco, CA
+--WebAppBoundary
+Content-Disposition: form-data; name="date"
+
+2025-04-10
+--WebAppBoundary
+Content-Disposition: form-data; name="time"
+
+08:30
+--WebAppBoundary
+Content-Disposition: form-data; name="mode"
+
+hybrid
+--WebAppBoundary
+Content-Disposition: form-data; name="audience"
+
+Cloud engineers, DevOps, enterprise leaders, AI researchers
+--WebAppBoundary
+Content-Disposition: form-data; name="agenda"
+
+08:30 AM - Keynote, 09:45 AM - Deep Dives, 11:15 AM - Demos
+--WebAppBoundary
+Content-Disposition: form-data; name="organizer"
+
+Google Cloud
+--WebAppBoundary
+Content-Disposition: form-data; name="tags"
+
+Cloud,DevOps,Kubernetes,AI
+--WebAppBoundary
+Content-Disposition: form-data; name="image"; filename="example.jpg"
+Content-Type: image/jpeg
+
+< ./public/images/example.jpg
+--WebAppBoundary--
+
+### Get All Events
+GET http://localhost:3000/api/events
