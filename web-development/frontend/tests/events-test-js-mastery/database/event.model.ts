@@ -1,21 +1,8 @@
 import { Schema, model, models, Document } from "mongoose";
+import { type EventData } from "@/lib/types";
 
 // TypeScript interface for Event document
-export interface IEvent extends Document {
-  title: string;
-  slug: string;
-  description: string;
-  overview: string;
-  image: string;
-  venue: string;
-  location: string;
-  date: string;
-  time: string;
-  mode: string;
-  audience: string;
-  agenda: string[];
-  organizer: string;
-  tags: string[];
+export interface IEvent extends Document, EventData {
   createdAt: Date;
   updatedAt: Date;
 }
@@ -40,12 +27,6 @@ const EventSchema = new Schema<IEvent>(
       trim: true,
       maxlength: [1000, "Description cannot exceed 1000 characters"],
     },
-    overview: {
-      type: String,
-      required: [true, "Overview is required"],
-      trim: true,
-      maxlength: [500, "Overview cannot exceed 500 characters"],
-    },
     image: {
       type: String,
       required: [true, "Image URL is required"],
@@ -56,11 +37,6 @@ const EventSchema = new Schema<IEvent>(
       required: [true, "Venue is required"],
       trim: true,
     },
-    location: {
-      type: String,
-      required: [true, "Location is required"],
-      trim: true,
-    },
     date: {
       type: String,
       required: [true, "Date is required"],
@@ -68,40 +44,6 @@ const EventSchema = new Schema<IEvent>(
     time: {
       type: String,
       required: [true, "Time is required"],
-    },
-    mode: {
-      type: String,
-      required: [true, "Mode is required"],
-      enum: {
-        values: ["online", "offline", "hybrid"],
-        message: "Mode must be either online, offline, or hybrid",
-      },
-    },
-    audience: {
-      type: String,
-      required: [true, "Audience is required"],
-      trim: true,
-    },
-    agenda: {
-      type: [String],
-      required: [true, "Agenda is required"],
-      validate: {
-        validator: (v: string[]) => v.length > 0,
-        message: "At least one agenda item is required",
-      },
-    },
-    organizer: {
-      type: String,
-      required: [true, "Organizer is required"],
-      trim: true,
-    },
-    tags: {
-      type: [String],
-      required: [true, "Tags are required"],
-      validate: {
-        validator: (v: string[]) => v.length > 0,
-        message: "At least one tag is required",
-      },
     },
   },
   {
@@ -149,9 +91,16 @@ function normalizeDate(dateString: string): string {
 
 // Helper function to normalize time format
 function normalizeTime(timeString: string): string {
-  // Handle various time formats and convert to HH:MM (24-hour format)
+  const parts = timeString.split("to").map((p) => p.trim());
+  if (parts.length === 2) {
+    return `${normalizeSingleTime(parts[0])} to ${normalizeSingleTime(parts[1])}`;
+  }
+  return normalizeSingleTime(timeString);
+}
+
+function normalizeSingleTime(time: string): string {
   const timeRegex = /^(\d{1,2}):(\d{2})(\s*(AM|PM))?$/i;
-  const match = timeString.trim().match(timeRegex);
+  const match = time.match(timeRegex);
 
   if (!match) {
     throw new Error("Invalid time format. Use HH:MM or HH:MM AM/PM");
@@ -162,7 +111,6 @@ function normalizeTime(timeString: string): string {
   const period = match[4]?.toUpperCase();
 
   if (period) {
-    // Convert 12-hour to 24-hour format
     if (period === "PM" && hours !== 12) hours += 12;
     if (period === "AM" && hours === 12) hours = 0;
   }
@@ -179,11 +127,8 @@ function normalizeTime(timeString: string): string {
   return `${hours.toString().padStart(2, "0")}:${minutes}`;
 }
 
-// Create unique index on slug for better performance
-EventSchema.index({ slug: 1 }, { unique: true });
-
-// Create compound index for common queries
-EventSchema.index({ date: 1, mode: 1 });
+// Create index for common queries
+EventSchema.index({ date: 1 });
 
 const Event = models.Event || model<IEvent>("Event", EventSchema);
 

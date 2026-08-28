@@ -6,5 +6,5 @@ pnpm init
 
 --add and install differences:
 
-npm or pnpm add name // install new dependencie
+npm or pnpm add name // install a new dependency
 npm or pnpm install name // install dependencies from package.json

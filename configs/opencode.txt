@@ -4,25 +4,25 @@
 @: select folder
 Mayus + 1: change to shell mode. Uses no tokens
 /tab: change model
-/models: different ai models
+/models: different AI models
 @explore, @general: subagents
 /sessions: switch between different sessions
 /timeline: timelines from prompts
-/compact: reduce or summarize the historial
+/compact: reduce or summarize the history
 /themes: change themes
 /init: create an AGENTS.md file in the project, based on README.md. Use this file for project context and build configuration.
 
 --notes:
 
--use skills to improve the code:
+-Use skills to improve the code:
 midu autoskill analyzes the project, identifies potential improvements, and recommends the most relevant skills to apply,
 or use individual skills based on your specific needs
 
 -hyperframes studio for creating videos based on the code
 
 --Md files and subagents:
-create .opencode/agents/frontend.md/backend.md, then use your owns prompts in those files,
-inside opencode, command @frontend, @backend, they will work like subagents and do various tasks at the same time
+create .opencode/agents/frontend.md/backend.md, then use your own prompts in those files,
+inside opencode, use the commands @frontend, @backend, they will work like subagents and do various tasks at the same time
 
 -commands:
 .opencode/commands/super-commit.md

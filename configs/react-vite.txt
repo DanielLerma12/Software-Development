@@ -3,7 +3,7 @@
 
 cd folder
 npm init -y : Create package.json
-npm create vite@latest: Init vite project
+npm create vite@latest: Initialize the Vite project
 project name
 select framework
 select variant

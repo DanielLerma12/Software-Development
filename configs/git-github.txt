@@ -9,36 +9,37 @@ git status -s: current status in a short version
 
 git add .: add everything in the folder (staging)
 
-git commit: save new version
-git commit -m "name": name or descryption for the version
-git commit --amend -m "name": change the name of current commit
-git reset --hard "commit": go to an specific commit and delete others after it
-git reset --soft "commit": go to an specific commit but conserve changes
+git commit: save a new version
+git commit -m "name": name or description for the version
+git commit --amend -m "name": change the name of the current commit
+git reset --hard "commit": go to a specific commit and delete the ones after it
+git reset --soft "commit": go to a specific commit but keep the changes
 
 git log: history, record
-git log --oneline: commits in oneline short versions
+git log --oneline: commits in short one-line versions
 
 git checkout d4e5f6g: go to a specific branch
 git switch: go to a specific branch
-git branch (branch name): create new branch
+git switch -c feature/navbar: create and go to that branch
+git branch (branch name): create a new branch
 git branch: show branches
-git merge (branch name): merge the branches to main work, position is from main branch
+git merge (branch name): merge the branches into main, run this from the main branch
 git branch -M (name): change branch name
-git branch -D (name): delete branch
+git branch -D (name): delete a branch
 
-git remote add origin "URL": creates the merge between remote and local repository
-git remote -v: see details from the conexion
-git remote set-url origin "URL": change the cloud repository 
-git remote remove origin: Remove origin ref
-git push -u origin main: upload commits to cloud; u the first time allows to use "git push" instead of "git push -u origin main" in the future
+git remote add origin "URL": create the connection between the remote and local repository
+git remote -v: see details of the connection
+git remote set-url origin "URL": change the cloud repository
+git remote remove origin: remove the origin reference
+git push -u origin main: upload commits to the cloud; the first time you use -u, it allows you to use "git push" instead of "git push -u origin main" in the future
 
-git tag "name": Create versions
-git tag -a "name" -m "Description": Create version with description
-git push origin "tag name": Upload tags to cloud
+git tag "name": create versions
+git tag -a "name" -m "Description": create a version with a description
+git push origin "tag name": upload tags to the cloud
 
-git clone "URL": Clone repos
+git clone "URL": clone repositories
 
-git mv "React Test Projects/01-twitter-follow-card" "projects/01-twitter-follow-card-p": Change folder name 
+git mv "React Test Projects/01-twitter-follow-card" "projects/01-twitter-follow-card-p": change folder name
 
 ----------------------------------------------
 
@@ -48,9 +49,9 @@ git mv "React Test Projects/01-twitter-follow-card" "projects/01-twitter-follow-
 
 -staging: select and prepare the specific files that will be part of your next version
 
--HEAD: where the work is located in the moment
+-HEAD: where the work is located at the moment
 
--git identifies commits with automatic ID number (Hash(digital footprint)) or the message-descryption
+-git identifies commits with an automatic ID number (hash, digital footprint) or the description
 
 
 

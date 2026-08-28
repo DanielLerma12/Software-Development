@@ -58,4 +58,6 @@ Content-Type: image/jpeg
 --WebAppBoundary--
 
 ### Get All Events
-GET http://localhost:3000/api/events
+GET http://localhost:3000/api/events/cloud-next-2026
+
+

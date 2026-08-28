@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128">
+  <!-- projection cone from characters to screen -->
+  <polygon points="28,76 100,76 108,28 20,28" fill="#e6fdf5" opacity="0.3"/>
+  <!-- 4 characters bodies -->
+  <circle cx="28" cy="96" r="10" fill="#82E6D7"/>
+  <circle cx="52" cy="96" r="10" fill="#A9EEFF"/>
+  <circle cx="76" cy="96" r="10" fill="#e7f2ff"/>
+  <circle cx="100" cy="96" r="10" fill="#bdbdbd"/>
+  <!-- 4 characters heads -->
+  <circle cx="28" cy="80" r="7.6" fill="#82E6D7"/>
+  <circle cx="52" cy="80" r="7.6" fill="#A9EEFF"/>
+  <circle cx="76" cy="80" r="7.6" fill="#e7f2ff"/>
+  <circle cx="100" cy="80" r="7.6" fill="#bdbdbd"/>
+  <!-- mini screen -->
+  <rect x="16" y="12" width="96" height="24" rx="4" fill="#0d161a" stroke="#182830" stroke-width="3"/>
+  <!-- screen glow -->
+  <rect x="20" y="16" width="88" height="16" rx="2" fill="#182830"/>
+  <!-- dots on screen -->
+  <circle cx="48" cy="24" r="3" fill="#82E6D7"/>
+  <circle cx="58" cy="24" r="3" fill="#A9EEFF"/>
+  <circle cx="68" cy="24" r="3" fill="#e7f2ff"/>
+  <circle cx="78" cy="24" r="3" fill="#bdbdbd"/>
+  <!-- screen stand -->
+  <rect x="60" y="36" width="8" height="8" rx="1" fill="#182830"/>
+  <rect x="52" y="42" width="24" height="4" rx="2" fill="#182830"/>
+</svg>

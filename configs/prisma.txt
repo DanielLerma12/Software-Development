@@ -22,7 +22,7 @@ datasource db {
 
 -configure client:
 
-npx prisma generate // prisma client for reading schema, use the database and queries, execute each time schema changes
+npx prisma generate // prisma client for reading the schema, using the database and queries, run it each time the schema changes
 
 -client:
 
@@ -65,7 +65,7 @@ DATABASE_URL="postgresql://postgres:password@db.xxxxx.supabase.co:5432/postgres"
 
 -push and pull:
 
-npx prisma db push // create database after creating the schema
-npx prisma db pull // if database is already created, and for each database update, then npx prisma generate
+npx prisma db push // create the database after creating the schema
+npx prisma db pull // if the database is already created, do this for each database update, then run npx prisma generate
 
 -npx prisma generate for production build command
