@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Schibsted_Grotesk, Martian_Mono } from "next/font/google";
 import "./globals.css";
-import LightRays from "@/components/LightRays";
+import GradientWaves from "@/components/GradientWaves";
 import NavBar from "@/components/NavBar";
 
 const schibstedGrotesk = Schibsted_Grotesk({
@@ -21,24 +21,33 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en">
+    <html lang="en-GB">
       <body
         className={`${schibstedGrotesk.variable} ${martianMono.variable} min-h-screen antialiased`}
       >
+        <GradientWaves
+          horizonColor="#5dfeca"
+          waveColor="#3abfa8"
+          crestColor="#ffffff"
+          speed={0.2}
+          amplitude={2.5}
+          waveScale={0.75}
+          waveRatio={1.4}
+          swell={24.5}
+          turbulence={7.0}
+          tilt={1.24}
+          zoom={1.1}
+          height={7.7}
+          fogDepth={10}
+          detail="high"
+          brightness={1}
+          opacity={0.27}
+          mouseInteraction={false}
+          parallaxStrength={1}
+          grain={false}
+          grainIntensity={0.05}
+        />
         <NavBar />
-        <div className="absolute inset-0 top-0 z-[-1] min-h-screen">
-          <LightRays
-            raysOrigin="top-center-offset"
-            raysColor="#5dfeca"
-            raysSpeed={0.5}
-            lightSpread={0.9}
-            rayLength={1.4}
-            followMouse={true}
-            mouseInfluence={0.02}
-            noiseAmount={0.0}
-            distortion={0.01}
-          />
-        </div>
         <main>{children}</main>
       </body>
     </html>

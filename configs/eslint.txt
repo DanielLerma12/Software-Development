@@ -1,5 +1,5 @@
 
---install eslint extension on ide:
+--install eslint extension on IDE:
 
 npm add eslint -D
 npm add @eslint/js -D // Js config

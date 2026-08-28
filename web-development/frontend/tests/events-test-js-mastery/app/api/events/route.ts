@@ -55,26 +55,9 @@ export async function POST(req: NextRequest) {
     const event = {
       title: formData.get("title"),
       description: formData.get("description"),
-      overview: formData.get("overview"),
       venue: formData.get("venue"),
-      location: formData.get("location"),
       date: formData.get("date"),
       time: formData.get("time"),
-      mode: formData.get("mode"),
-      audience: formData.get("audience"),
-      agenda: formData
-        .get("agenda")
-        ?.toString()
-        .split(",")
-        .map((s) => s.trim())
-        .filter(Boolean),
-      organizer: formData.get("organizer"),
-      tags: formData
-        .get("tags")
-        ?.toString()
-        .split(",")
-        .map((s) => s.trim())
-        .filter(Boolean),
       image: imageUrl,
     };
 
