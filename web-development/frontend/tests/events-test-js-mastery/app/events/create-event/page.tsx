@@ -1,35 +1,45 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
 import { Toaster } from "@/components/ui/toast";
 import { toast } from "@/components/ui/toast";
+import Form from "@/components/Form";
 
 const CreateEventPage = () => {
   const [submitting, setSubmitting] = useState(false);
   const [title, setTitle] = useState("");
-  const [date, setDate] = useState("");
-  const [startHour, setStartHour] = useState("09");
-  const [startMin, setStartMin] = useState("00");
-  const [endHour, setEndHour] = useState("17");
-  const [endMin, setEndMin] = useState("00");
+  const [eventType, setEventType] = useState<string[]>([]);
+  const [date, setDate] = useState<Date | null>(null);
+  const [startHour, setStartHour] = useState("6");
+  const [startMin, setStartMin] = useState("30");
+  const [startPeriod, setStartPeriod] = useState("PM");
+  const [endHour, setEndHour] = useState("9");
+  const [endMin, setEndMin] = useState("30");
+  const [endPeriod, setEndPeriod] = useState("PM");
   const [venue, setVenue] = useState("");
-  const [image, setImage] = useState<File | null>(null);
+  const [image, setImage] = useState<File | string | null>(null);
   const [description, setDescription] = useState("");
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-
     setSubmitting(true);
 
     const formData = new FormData();
     formData.append("title", title);
+    formData.append("eventType", eventType.join(", "));
     formData.append("description", description);
-    formData.append("date", date);
-    formData.append("time", `${startHour}:${startMin} to ${endHour}:${endMin}`);
+    formData.append(
+      "date",
+      date
+        ? `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, "0")}-${String(date.getDate()).padStart(2, "0")}`
+        : "",
+    );
+    formData.append(
+      "time",
+      `${startHour}:${startMin} ${startPeriod} to ${endHour}:${endMin} ${endPeriod}`,
+    );
     formData.append("venue", venue);
-
-    if (image) formData.append("image", image);
+    if (image instanceof File) formData.append("image", image);
 
     try {
       const res = await fetch("/api/events", {
@@ -51,19 +61,28 @@ const CreateEventPage = () => {
         });
 
         setTitle("");
-        setDate("");
+        setDate(null);
         setVenue("");
         setDescription("");
         setImage(null);
-        setStartHour("09");
-        setStartMin("00");
-        setEndHour("17");
-        setEndMin("00");
+        setEventType([]);
+        setStartHour("6");
+        setStartMin("30");
+        setStartPeriod("PM");
+        setEndHour("10");
+        setEndMin("30");
+        setEndPeriod("PM");
       } else {
-        console.error("API error:", data);
+        toast.add({
+          title: data.message || "Failed to create event",
+          type: "error",
+        });
       }
-    } catch (err) {
-      console.error(err);
+    } catch {
+      toast.add({
+        title: "An unexpected error occurred. Please try again.",
+        type: "error",
+      });
     } finally {
       setSubmitting(false);
     }
@@ -71,187 +90,38 @@ const CreateEventPage = () => {
 
   return (
     <section id="create-event" className="form-shared">
-      <h1 className="text-4xl font-bold;">Create an Event</h1>
+      <h1 className="text-4xl font-bold">Create an Event</h1>
 
-      <div className="form-container">
-        <form onSubmit={handleSubmit}>
-          <div className="form-group">
-            <label htmlFor="title">Event Title</label>
-            <input
-              id="title"
-              type="text"
-              placeholder="Enter event title"
-              value={title}
-              onChange={(e) => setTitle(e.target.value)}
-              required
-            />
-          </div>
+      <Form
+        submitting={submitting}
+        onSubmit={handleSubmit}
+        submitLabel="Save Event"
+        title={title}
+        setTitle={setTitle}
+        eventType={eventType}
+        setEventType={setEventType}
+        date={date}
+        setDate={setDate}
+        startHour={startHour}
+        setStartHour={setStartHour}
+        startMin={startMin}
+        setStartMin={setStartMin}
+        startPeriod={startPeriod}
+        setStartPeriod={setStartPeriod}
+        endHour={endHour}
+        setEndHour={setEndHour}
+        endMin={endMin}
+        setEndMin={setEndMin}
+        endPeriod={endPeriod}
+        setEndPeriod={setEndPeriod}
+        venue={venue}
+        setVenue={setVenue}
+        image={image}
+        setImage={setImage}
+        description={description}
+        setDescription={setDescription}
+      />
 
-          <div className="form-row">
-            <div className="form-group">
-              <label htmlFor="date">Event Date</label>
-              <div className="input-with-icon">
-                <Image
-                  src="/icons/calendar.svg"
-                  alt="date"
-                  width={16}
-                  height={16}
-                />
-                <input
-                  id="date"
-                  type="date"
-                  value={date}
-                  onChange={(e) => setDate(e.target.value)}
-                  required
-                />
-              </div>
-            </div>
-
-            <div className="form-group">
-              <label htmlFor="start-time">Event Time</label>
-              <div className="input-with-icon time-inputs">
-                <Image
-                  src="/icons/clock.svg"
-                  alt="time"
-                  width={16}
-                  height={16}
-                />
-                <select
-                  id="start-time"
-                  value={startHour}
-                  onChange={(e) => setStartHour(e.target.value)}
-                  required
-                >
-                  {Array.from({ length: 24 }, (_, i) =>
-                    String(i).padStart(2, "0"),
-                  ).map((h) => (
-                    <option key={h} value={h}>
-                      {h}
-                    </option>
-                  ))}
-                </select>
-                <span className="time-separator">:</span>
-                <select
-                  value={startMin}
-                  onChange={(e) => setStartMin(e.target.value)}
-                  required
-                >
-                  {[
-                    "00",
-                    "05",
-                    "10",
-                    "15",
-                    "20",
-                    "25",
-                    "30",
-                    "35",
-                    "40",
-                    "45",
-                    "50",
-                    "55",
-                  ].map((m) => (
-                    <option key={m} value={m}>
-                      {m}
-                    </option>
-                  ))}
-                </select>
-                <span className="time-separator">to</span>
-                <select
-                  id="end-time"
-                  value={endHour}
-                  onChange={(e) => setEndHour(e.target.value)}
-                  required
-                >
-                  {Array.from({ length: 24 }, (_, i) =>
-                    String(i).padStart(2, "0"),
-                  ).map((h) => (
-                    <option key={h} value={h}>
-                      {h}
-                    </option>
-                  ))}
-                </select>
-                <span className="time-separator">:</span>
-                <select
-                  value={endMin}
-                  onChange={(e) => setEndMin(e.target.value)}
-                  required
-                >
-                  {[
-                    "00",
-                    "05",
-                    "10",
-                    "15",
-                    "20",
-                    "25",
-                    "30",
-                    "35",
-                    "40",
-                    "45",
-                    "50",
-                    "55",
-                  ].map((m) => (
-                    <option key={m} value={m}>
-                      {m}
-                    </option>
-                  ))}
-                </select>
-              </div>
-            </div>
-          </div>
-
-          <div className="form-group">
-            <label htmlFor="venue">Event Venue</label>
-            <div className="input-with-icon">
-              <Image src="/icons/pin.svg" alt="venue" width={16} height={16} />
-              <input
-                id="venue"
-                type="text"
-                placeholder="Enter venue"
-                value={venue}
-                onChange={(e) => setVenue(e.target.value)}
-                required
-              />
-            </div>
-          </div>
-
-          <div className="form-group">
-            <label>Event Image / Banner</label>
-            <label htmlFor="image" className="file-upload">
-              <Image
-                src="/icons/arrow-down.svg"
-                alt="upload"
-                width={16}
-                height={16}
-              />
-              <span>{image ? image.name : "Upload event image or banner"}</span>
-              <input
-                id="image"
-                type="file"
-                accept="image/*"
-                onChange={(e) => setImage(e.target.files?.[0] || null)}
-                hidden
-                required
-              />
-            </label>
-          </div>
-
-          <div className="form-group">
-            <label htmlFor="description">Event Description</label>
-            <textarea
-              id="description"
-              placeholder="Briefly describe the event"
-              rows={5}
-              value={description}
-              onChange={(e) => setDescription(e.target.value)}
-              required
-            />
-          </div>
-
-          <button type="submit" className="submit-btn" disabled={submitting}>
-            {submitting ? "Saving..." : "Save Event"}
-          </button>
-        </form>
-      </div>
       <Toaster />
     </section>
   );

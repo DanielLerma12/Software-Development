@@ -5,6 +5,7 @@ import { type EventData } from "@/lib/types";
 export interface IEvent extends Document, EventData {
   createdAt: Date;
   updatedAt: Date;
+  attendees: string[];
 }
 
 const EventSchema = new Schema<IEvent>(
@@ -44,6 +45,17 @@ const EventSchema = new Schema<IEvent>(
     time: {
       type: String,
       required: [true, "Time is required"],
+    },
+    eventType: {
+      type: String,
+      required: [true, "Event type is required"],
+      trim: true,
+    },
+    attendees: {
+      type: [String],
+      default: [],
+      lowercase: true,
+      trim: true,
     },
   },
   {
@@ -91,7 +103,7 @@ function normalizeDate(dateString: string): string {
 
 // Helper function to normalize time format
 function normalizeTime(timeString: string): string {
-  const parts = timeString.split("to").map((p) => p.trim());
+  const parts = timeString.split(/\s+to\s+/i).map((p) => p.trim());
   if (parts.length === 2) {
     return `${normalizeSingleTime(parts[0])} to ${normalizeSingleTime(parts[1])}`;
   }
@@ -129,6 +141,7 @@ function normalizeSingleTime(time: string): string {
 
 // Create index for common queries
 EventSchema.index({ date: 1 });
+EventSchema.index({ eventType: 1 });
 
 const Event = models.Event || model<IEvent>("Event", EventSchema);
 

@@ -1,19 +1,63 @@
 "use client";
 
 import { createBooking } from "@/lib/actions/booking.actions";
+import { toast } from "@/components/ui/toast";
 import { useState } from "react";
 
-const BookEvent = ({ eventId, slug }: { eventId: string; slug: string }) => {
+const BookEvent = ({
+  slug,
+  title,
+  date,
+  time,
+}: {
+  slug: string;
+  title: string;
+  date: string;
+  time: string;
+}) => {
   const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
 
+  // validar tiempo de expiración
+
+  const now = new Date();
+
+  const today = [
+    now.getFullYear(),
+    String(now.getMonth() + 1).padStart(2, "0"),
+    String(now.getDate()).padStart(2, "0"),
+  ].join("-");
+
+  const currentTime = [
+    String(now.getHours()).padStart(2, "0"),
+    String(now.getMinutes()).padStart(2, "0"),
+  ].join(":");
+
+  const expired =
+    date < today ||
+    (date === today && time.split(" to ")[0] <= currentTime);
+
   const handleSubmit = async (e: React.FormEvent) => {
-    const { success } = await createBooking({ eventId, slug, email });
+    e.preventDefault();
+
+    const { success, message } = await createBooking({ slug, email });
 
     if (success) {
+      toast.add({
+        title: (
+          <span>
+            Email: <span className="text-[#59deca] font-bold">{email}</span>{" "}
+            registered correctly in the event:{" "}
+            <span className="text-[#59deca] font-bold">{title}</span>
+          </span>
+        ),
+      });
       setSubmitted(true);
     } else {
-      console.error("Booking creation failed");
+      toast.add({
+        title: `${message}. Please try again.`,
+        type: "error",
+      });
     }
   };
   return (
@@ -29,11 +73,21 @@ const BookEvent = ({ eventId, slug }: { eventId: string; slug: string }) => {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               id="email"
-              placeholder="Enter your email address"
+              placeholder={
+                expired
+                  ? "Event expired :("
+                  : "Enter your email address"
+              }
+              autoComplete="off"
+              disabled={expired}
             ></input>
           </div>
 
-          <button type="submit" className="button-submit">
+          <button
+            type="submit"
+            className="button-submit"
+            disabled={expired}
+          >
             Submit
           </button>
         </form>

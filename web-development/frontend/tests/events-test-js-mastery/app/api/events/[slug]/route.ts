@@ -89,6 +89,30 @@ export async function PATCH(
 
     const formData = await request.formData();
 
+    const title = formData.get("title");
+    const description = formData.get("description");
+    const venue = formData.get("venue");
+    const date = formData.get("date");
+    const time = formData.get("time");
+    const eventType = formData.get("eventType");
+
+    // validaciones
+
+    // vacios
+    if (
+      title === "" ||
+      description === "" ||
+      venue === "" ||
+      date === "" ||
+      time === "" ||
+      eventType === ""
+    ) {
+      return NextResponse.json(
+        { message: "All the fields are required" },
+        { status: 400 },
+      );
+    }
+
     const existing = await Event.findOne({ slug });
     if (!existing) {
       return NextResponse.json({ message: "Event not found" }, { status: 404 });
@@ -99,20 +123,28 @@ export async function PATCH(
     let imageUrl = existing.image;
 
     if (file && file.size > 0) {
-      const arrayBuffer = await file.arrayBuffer();
-      const buffer = Buffer.from(arrayBuffer);
-      const uploadResult = await new Promise((resolve, reject) => {
-        cloudinary.uploader
-          .upload_stream(
-            { resource_type: "image", folder: "DevEvent" },
-            (error, results) => {
-              if (error) return reject(error);
-              resolve(results);
-            },
-          )
-          .end(buffer);
-      });
-      imageUrl = (uploadResult as { secure_url: string }).secure_url;
+      try {
+        const arrayBuffer = await file.arrayBuffer();
+        const buffer = Buffer.from(arrayBuffer);
+        const uploadResult = await new Promise((resolve, reject) => {
+          cloudinary.uploader
+            .upload_stream(
+              { resource_type: "image", folder: "DevEvent" },
+              (error, results) => {
+                if (error) return reject(error);
+                resolve(results);
+              },
+            )
+            .end(buffer);
+        });
+        imageUrl = (uploadResult as { secure_url: string }).secure_url;
+      } catch (uploadErr) {
+        console.error("Cloudinary upload failed:", uploadErr);
+        return NextResponse.json(
+          { message: "Failed to upload image. Please try again." },
+          { status: 422 },
+        );
+      }
     }
 
     const newTitle =
@@ -126,6 +158,7 @@ export async function PATCH(
       date: formData.get("date") || existing.date,
       time: formData.get("time") || existing.time,
       venue: formData.get("venue") || existing.venue,
+      eventType: formData.get("eventType") || existing.eventType,
       image: imageUrl,
     });
 
