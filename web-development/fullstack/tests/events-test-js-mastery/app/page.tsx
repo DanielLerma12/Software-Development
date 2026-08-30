@@ -1,9 +1,9 @@
 import ExploreBtn from "@/components/ExploreBtn";
 import EventCard from "@/components/EventCard";
 import { type IEvent } from "@/database/event.model";
+import connectDB from "@/lib/mongodb";
+import Event from "@/database/event.model";
 import { Suspense } from "react";
-
-const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 
 const HandlerPage = async () => {
   return (
@@ -14,8 +14,13 @@ const HandlerPage = async () => {
 };
 
 const Page = async () => {
-  const response = await fetch(`${BASE_URL}/api/events`);
-  const { events } = await response.json();
+  let events: IEvent[] = [];
+  try {
+    await connectDB();
+    events = await Event.find().sort({ createdAt: -1 }).lean();
+  } catch (e) {
+    console.error("Failed to fetch events:", e);
+  }
 
   return (
     <>

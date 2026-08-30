@@ -5,8 +5,8 @@ import { type IEvent } from "@/database/event.model";
 import EditButton from "@/components/EditButton";
 import DeleteButton from "@/components/DeleteButton";
 import { Toaster } from "@/components/ui/toast";
-
-const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
+import connectDB from "@/lib/mongodb";
+import Event from "@/database/event.model";
 
 const PAGE_SIZE = 10;
 
@@ -31,8 +31,13 @@ const AllEvents = async ({
 
   const currentPage = Math.max(1, Number(page) || 1);
 
-  const response = await fetch(`${BASE_URL}/api/events`);
-  const { events } = await response.json();
+  let events: IEvent[] = [];
+  try {
+    await connectDB();
+    events = await Event.find().sort({ createdAt: -1 }).lean();
+  } catch (e) {
+    console.error("Failed to fetch events:", e);
+  }
 
   const totalCount: number = events?.length ?? 0;
   const totalPages = Math.max(1, Math.ceil(totalCount / PAGE_SIZE));
