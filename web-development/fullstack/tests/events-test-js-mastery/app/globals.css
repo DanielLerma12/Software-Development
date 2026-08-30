@@ -102,14 +102,24 @@ html {
     @apply flex flex-col sm:gap-5 gap-4;
   }
 
-  /* Responsive: sm:p-8 en tablet+, p-3 en móvil */
+  /* Responsive: sm:p-8 en tablet+, p-3 en móvil / dentro del modal: más compacto */
   .form-shared .form-container {
     @apply rounded-xl border border-dark-200 bg-dark-100 sm:p-8 p-3;
     overflow: hidden;
   }
 
+  /* Modal: form-container más compacto */
+  .modal-content .form-container {
+    @apply sm:p-6 p-2;
+  }
+
   .form-shared .form-group {
     @apply flex flex-col gap-2 flex-1;
+  }
+
+  /* Modal: form-group más compacto */
+  .modal-content .form-group {
+    @apply gap-1;
   }
 
   .form-shared .form-group label {
@@ -283,9 +293,19 @@ html {
     @apply flex cursor-pointer items-center justify-center gap-3 rounded-md border border-dashed border-dark-200 bg-dark-200 sm:px-4 sm:py-6 px-3 py-4 text-sm text-light-200 transition-colors hover:border-primary hover:text-light-100;
   }
 
+  /* Modal: file upload más compacto */
+  .modal-content .file-upload {
+    @apply sm:py-4 py-3;
+  }
+
   .form-shared .submit-btn {
     /* Responsive: sm:py-3 sm:text-lg en tablet+, py-2.5 text-base en móvil */
     @apply w-full cursor-pointer rounded-md bg-primary sm:py-3 py-2.5 sm:text-lg text-base font-semibold text-black transition-colors hover:bg-primary/90 disabled:opacity-50;
+  }
+
+  /* Modal: submit más compacto */
+  .modal-content .submit-btn {
+    @apply sm:py-2.5 py-2;
   }
 
   .form-shared .event-type-pill {
@@ -613,28 +633,30 @@ html {
   @apply text-center sm:mb-4 mb-2 text-gradient;
 }
 
+/* Responsive: padding más pequeño en móvil */
 .modal-overlay {
   position: fixed;
   inset: 0;
   z-index: 9999;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   background: rgba(0, 0, 0, 0.6);
-  padding: 1rem;
+  padding: 0.5rem;
   backdrop-filter: blur(4px);
+  overflow-y: auto;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
 }
 
-/* Responsive: sm:p-8 en tablet+, p-4 en móvil / sm:gap-6 en tablet+, gap-4 en móvil */
+/* Responsive: sm:p-6 en tablet+, p-3 en móvil / sm:gap-5 en tablet+, gap-3 en móvil */
 .modal-content {
-  @apply relative max-h-[90vh] w-full max-w-3xl overflow-y-auto rounded-xl sm:p-8 p-4 flex flex-col sm:gap-6 gap-4;
+  @apply relative w-full max-w-3xl rounded-xl sm:p-6 p-3 flex flex-col sm:gap-5 gap-3 my-4;
 }
 
 /* Responsive: sm:mb-4 en tablet+, mb-2 en móvil */
 .modal-content > h1 {
-  @apply text-center sm:mb-4 mb-2 text-gradient;
+  @apply text-center sm:mb-4 mb-1 text-gradient;
 }
 
 .modal-content .modal-close {
-  @apply absolute right-4 top-4 text-2xl text-light-200 transition-colors hover:text-light-100 cursor-pointer;
+  @apply absolute right-3 top-3 text-2xl text-light-200 transition-colors hover:text-light-100 cursor-pointer;
 }
