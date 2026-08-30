@@ -8,13 +8,11 @@ interface EditButtonProps {
   event: EventData;
 }
 
-const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
-
 const DeleteButton = ({ event }: EditButtonProps) => {
   const router = useRouter();
 
   const handleDelete = async () => {
-    const res = await fetch(`${BASE_URL}/api/events/${event.slug}`, {
+    const res = await fetch(`/api/events/${event.slug}`, {
       method: "DELETE",
     });
 
