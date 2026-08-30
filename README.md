@@ -17,7 +17,7 @@ Basic and intermediate course with 50+ practical exercises.
 
 TypeScript fundamentals: types, generics, type aliases, union/intersection types, interfaces, narrowing, enums, arrays, tuples, assertions.
 
-### [Hand Challenge — Midudev](languages/hand-challenge-test-midu/)
+### [Hand Challenge — Midudev](languages/tests/hand-challenge-test-midu/)
 
 Interpreter for an emoji-based esoteric programming language — pointers, memory, loops.
 
@@ -26,10 +26,6 @@ Interpreter for an emoji-based esoteric programming language — pointers, memor
 ## [Web Development](web-development/)
 
 ### [Frontend](web-development/frontend/)
-
-#### [HTML Course — Midudev](web-development/frontend/html-course-midu/)
-
-HTML basics: semantic HTML, meta tags, Open Graph, portfolio page.
 
 #### [React Course — Midudev](web-development/frontend/react-course-midu/)
 
@@ -53,25 +49,17 @@ HTML basics: semantic HTML, meta tags, Open Graph, portfolio page.
 | [11 - Zustand JS Quiz](web-development/frontend/react-course-midu/projects/11-zustand-javascript-quiz/)             | Quiz app                   | React, TypeScript, Zustand               |
 | [12 - Zustand CRUD](web-development/frontend/react-course-midu/projects/12-zustand-crud/)                           | CRUD app                   | React, TypeScript, Zustand, Tailwind CSS |
 
-#### [Jikan API Test](web-development/frontend/jikanapi-test/)
+#### Practice
 
-Practice project using the unofficial MyAnimeList API (Jikan). Vanilla JS, multi-page app.
-
-#### [Tetris](web-development/frontend/tetris-test-midu/)
-
-Classic Tetris game. Vanilla JS + Vite, with audio assets.
-
-#### [Next.js Course — Midudev](web-development/frontend/nextjs-course-midu/)
-
-In progress — currently contains course notes and setup commands (`create-next-app`).
+| Project                                                                        | Description                          | Key Technologies       |
+| ------------------------------------------------------------------------------ | ------------------------------------ | ---------------------- |
+| [HTML Course — Midudev](web-development/frontend/tests/html-course-midu/)       | Semantic HTML, meta tags, portfolio  | HTML, CSS              |
+| [Jikan API Test](web-development/frontend/tests/jikanapi-test/)                | Anime search app (Jikan API)         | Vanilla JS, HTML/CSS   |
+| [Tetris](web-development/frontend/tests/tetris-test-midu/)                     | Classic Tetris game                  | Vanilla JS, Vite       |
 
 ---
 
 ### [Backend](web-development/backend/)
-
-#### [Callbacks & Promises Test — Midudev](web-development/backend/callbacks-promises-test-midu/)
-
-7 technical exercises: callback-to-promise conversion, file I/O, dotenv implementation, Express CRUD API.
 
 #### [Node.js Course — Midudev](web-development/backend/nodejs-course-midu/)
 
@@ -82,9 +70,17 @@ In progress — currently contains course notes and setup commands (`create-next
 | [04: REST API Frontend](web-development/backend/nodejs-course-midu/class-04-rest-api-deploy-front/) | Frontend for the REST API                                                          | HTML/CSS/JS                     |
 | [05: Real-time Chat](web-development/backend/nodejs-course-midu/class-05-chat-realtime/)            | Real-time chat app                                                                 | Socket.io, Prisma, JWT, Cookies |
 
+#### Practice
+
+| Project                                                                                         | Description                                        | Key Technologies     |
+| ----------------------------------------------------------------------------------------------- | -------------------------------------------------- | -------------------- |
+| [Callbacks & Promises Test — Midudev](web-development/backend/tests/callbacks-promises-test-midu/) | 7 exercises: callback-to-promise, file I/O, dotenv, Express CRUD | Node.js, Express     |
+
 ---
 
-### [Fullstack — JSCamp Bootcamp — Midudev](web-development/fullstack/jscamp-course-midu/)
+### [Fullstack](web-development/fullstack/)
+
+#### [JSCamp Bootcamp — Midudev](web-development/fullstack/jscamp-course-midu/)
 
 Complete 9-module bootcamp covering the full stack.
 
@@ -97,8 +93,24 @@ Complete 9-module bootcamp covering the full stack.
 | [05: Testing](web-development/fullstack/jscamp-course-midu/05-testing/)                             | E2E testing with Playwright and AI-powered testing | Playwright, Stagehand                    |
 | [06: TypeScript](web-development/fullstack/jscamp-course-midu/06-typescript/)                       | TS fundamentals, functions, interfaces & types     | TypeScript                               |
 | [07: AI Integration](web-development/fullstack/jscamp-course-midu/07-inteligencia-artificial/)      | AI-powered features with Google AI SDK             | Google AI SDK, Vercel AI, React, Express |
-| [08: OpenCode](web-development/fullstack/jscamp-course-midu/08-opencode/)                           | Vanilla HTML/CSS/JS Dino Runner game (Canvas + Web Audio API) | HTML, CSS, JS, Canvas, Web Audio API    |
+| [08: OpenCode](web-development/fullstack/jscamp-course-midu/08-opencode/)                           | Dino Runner game (Canvas + Web Audio API)          | HTML, CSS, JS, Canvas, Web Audio API     |
 | [09: Docker](web-development/fullstack/jscamp-course-midu/09-docker/)                               | 7 progressive exercises: basics to Docker Compose  | Docker, Docker Compose                   |
+
+#### [Next.js Course — JS Mastery](web-development/fullstack/nextjs-course-js-mastery/)
+
+Fullstack Next.js 16 course with React 19, Tailwind CSS 4, and App Router.
+
+#### Practice
+
+| Project                                                                                     | Description                                    | Key Technologies                                  |
+| ------------------------------------------------------------------------------------------- | ---------------------------------------------- | ------------------------------------------------- |
+| [Events App — JS Mastery](web-development/fullstack/tests/events-test-js-mastery/)          | Full-stack events booking app                  | Next.js, MongoDB/Mongoose, Cloudinary, Tailwind CSS |
+
+---
+
+## [Configs](configs/)
+
+Reference cheat sheets covering Docker, ESLint, Git/GitHub, monorepo patterns, Next.js, npm/pnpm, OpenCode, Prisma, React Query, React Router, React+Vite, shadcn/ui, terminal commands, and Vite.
 
 ---
 
