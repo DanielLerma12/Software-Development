@@ -1,7 +1,8 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  output: "standalone",
+  // linea de docker
+  /*   output: "standalone", */
   images: {
     remotePatterns: [
       {
