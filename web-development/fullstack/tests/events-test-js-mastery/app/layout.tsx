@@ -1,12 +1,8 @@
 import type { Metadata } from "next";
 import { Schibsted_Grotesk, Martian_Mono } from "next/font/google";
 import "./globals.css";
-import dynamic from "next/dynamic";
+import GradientWaves from "@/components/GradientWaves";
 import NavBar from "@/components/NavBar";
-
-const GradientWaves = dynamic(() => import("@/components/GradientWaves"), {
-  ssr: false,
-});
 
 const schibstedGrotesk = Schibsted_Grotesk({
   variable: "--font-schibsted-grotesk",
