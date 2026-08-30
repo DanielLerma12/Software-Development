@@ -9,7 +9,7 @@ it: interactive terminal
 images: list active images
 ps: list active containers
 ps -a: list all containers
-d: run the container in the background and then use docker logs -f <container_id> to watch the logs
+-d: run the container in the background and then use docker logs -f <container_id> to watch the logs
 -p 5002:3000: map port 5002 on your computer to port 3000 inside the container
 -e: add environment variables, docker run -d -p 5005:3000 -e SALUDO="hola daniel" --name web-env 02-node-web
 --env-file .env: load environment variables directly from a .env file
