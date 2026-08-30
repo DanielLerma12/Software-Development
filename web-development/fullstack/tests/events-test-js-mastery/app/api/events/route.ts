@@ -99,7 +99,7 @@ export async function POST(req: NextRequest) {
 
     const createdEvent = await Event.create(event);
 
-    sendEventCreatedEmail(createdEvent);
+    await sendEventCreatedEmail(createdEvent);
 
     return NextResponse.json(
       {

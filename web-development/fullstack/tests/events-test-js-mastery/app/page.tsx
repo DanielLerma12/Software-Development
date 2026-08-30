@@ -5,6 +5,8 @@ import connectDB from "@/lib/mongodb";
 import Event from "@/database/event.model";
 import { Suspense } from "react";
 
+export const dynamic = "force-dynamic";
+
 const HandlerPage = async () => {
   return (
     <Suspense fallback={<div className="text-center">Loading Home...</div>}>
