@@ -15,7 +15,7 @@ const martianMono = Martian_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "DevEvent",
+  title: "CrewEvents",
   description: "The hub for every dev event you mustn't miss",
 };
 
@@ -29,19 +29,19 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           horizonColor="#5dfeca"
           waveColor="#3abfa8"
           crestColor="#ffffff"
-          speed={0.2}
+          speed={0.15}
           amplitude={2.5}
-          waveScale={0.75}
-          waveRatio={1.4}
-          swell={24.5}
-          turbulence={7.0}
-          tilt={1.24}
-          zoom={1.1}
+          waveScale={0.5}
+          waveRatio={0.3}
+          swell={30}
+          turbulence={20}
+          tilt={1.3}
+          zoom={1.15}
           height={7.7}
           fogDepth={10}
           detail="high"
           brightness={1}
-          opacity={0.27}
+          opacity={0.5}
           mouseInteraction={false}
           parallaxStrength={1}
           grain={false}

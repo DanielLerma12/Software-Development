@@ -3,6 +3,10 @@
 
 @custom-variant dark (&:is(.dark *));
 
+html {
+  scrollbar-gutter: stable;
+}
+
 :root {
   --color-blue: #94eaff;
   --color-light-100: #e7f2ff;
@@ -44,7 +48,7 @@
 }
 
 @utility text-gradient {
-  @apply to-blue bg-linear-to-b from-white via-white bg-clip-text font-semibold text-transparent;
+  @apply bg-linear-to-b from-white to-[#7ce8d8] bg-clip-text font-semibold text-transparent;
 }
 
 @utility glass {
@@ -73,7 +77,7 @@
   }
 
   h1 {
-    @apply text-gradient text-6xl font-semibold leading-snug max-sm:text-4xl;
+    @apply text-gradient text-5xl font-semibold leading-snug max-sm:text-3xl;
   }
 
   h3 {
@@ -95,11 +99,7 @@
   }
 
   .form-shared .form-container {
-    @apply rounded-xl border border-dark-200 bg-dark-100/80 p-8;
-  }
-
-  .form-shared .form-row {
-    @apply flex gap-5 max-sm:flex-col;
+    @apply rounded-xl border border-dark-200 bg-dark-100 p-8;
   }
 
   .form-shared .form-group {
@@ -120,45 +120,43 @@
     @apply cursor-pointer appearance-none bg-[url('/icons/arrow-down.svg')] bg-size-[14px] bg-position-[right_12px_center] bg-no-repeat pr-10;
   }
 
+  .form-shared .form-group select option {
+    background-color: #182830;
+    color: #e7f2ff;
+  }
+
   .form-shared .form-group textarea {
     @apply resize-none;
   }
 
   .form-shared .input-with-icon {
-    @apply flex items-center gap-3 rounded-md border border-dark-200 bg-dark-200 px-4 py-3;
+    @apply flex items-center gap-2;
   }
 
   .form-shared .input-with-icon input {
-    @apply border-0 bg-transparent p-0 text-sm text-light-100 placeholder:text-light-200/50 outline-none flex-1 relative;
+    @apply flex-1 relative rounded-md border border-dark-200 bg-dark-200 px-4 py-3 text-sm text-light-100 placeholder:text-light-200/50 outline-none transition-colors focus:border-primary;
   }
 
-  .form-shared .input-with-icon input::-webkit-calendar-picker-indicator {
-    position: absolute;
-    right: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 0;
-    cursor: pointer;
-    filter: invert(1);
+  .form-shared .input-with-icon:focus-within input {
+    border-color: var(--primary);
   }
 
   .form-shared .input-with-icon select {
-    @apply border-0 bg-transparent p-0 text-sm text-light-100 outline-none cursor-pointer;
+    @apply cursor-pointer rounded-md border border-dark-200 bg-dark-200 px-4 py-3 text-sm text-light-100 outline-none transition-colors focus:border-primary;
     min-width: 2.5rem;
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
-    background-image: none;
-    background-color: transparent;
+    background-image: url("/icons/arrow-down.svg");
+    background-size: 14px;
+    background-position: right 10px center;
+    background-repeat: no-repeat;
+    background-color: #182830;
     color-scheme: dark;
   }
 
-  .form-shared .input-with-icon select::-ms-expand {
-    display: none;
-  }
-
   .form-shared .input-with-icon select option {
-    background-color: #404040;
+    background-color: #182830;
     color: #e7f2ff;
   }
 
@@ -167,17 +165,90 @@
     @apply shrink-0 opacity-60;
   }
 
+  .form-shared .date-picker-wrapper > img {
+    margin-right: 0.5rem;
+  }
+
   .form-shared .time-separator {
     @apply text-light-200 text-sm;
   }
 
   .form-shared .time-inputs {
-    @apply gap-2;
+    @apply gap-2 flex-1;
   }
 
   .form-shared .time-inputs select {
     @apply w-auto text-center text-sm;
-    min-width: 2.5rem;
+    min-width: 3.25rem;
+    flex: 1 1 auto;
+    padding: 0.75rem 1.5rem;
+    background-image: none;
+  }
+
+  .form-shared .date-picker-wrapper {
+    @apply relative w-full;
+    gap: 0;
+  }
+
+  .form-shared .date-picker-wrapper .react-datepicker-wrapper {
+    @apply w-full;
+  }
+
+  .form-shared .date-picker-wrapper .react-datepicker__input-container input {
+    @apply w-full cursor-pointer rounded-md border border-dark-200 bg-dark-200 px-4 py-3 text-sm text-light-100 placeholder:text-light-200/50 outline-none transition-colors focus:border-primary;
+    color-scheme: dark;
+  }
+
+  .react-datepicker {
+    background-color: #182830 !important;
+    border: 1px solid #2a3a44 !important;
+    border-radius: 0.5rem !important;
+    font-family: inherit !important;
+  }
+
+  .react-datepicker__header {
+    background-color: #182830 !important;
+    border-bottom: 1px solid #2a3a44 !important;
+  }
+
+  .react-datepicker__current-month,
+  .react-datepicker__day-name {
+    color: #e7f2ff !important;
+  }
+
+  .react-datepicker__day {
+    color: #e7f2ff !important;
+    border-radius: 0.375rem !important;
+  }
+
+  .react-datepicker__day:hover {
+    background-color: #2a3a44 !important;
+  }
+
+  .react-datepicker__day--selected,
+  .react-datepicker__day--keyboard-selected {
+    background-color: #59deca !important;
+    color: #0d161a !important;
+  }
+
+  .react-datepicker__day--outside-month {
+    color: #555 !important;
+  }
+
+  .react-datepicker__navigation {
+    border: 0.4rem solid transparent !important;
+  }
+
+  .react-datepicker__navigation--previous {
+    border-right-color: #e7f2ff !important;
+  }
+
+  .react-datepicker__navigation--next {
+    border-left-color: #e7f2ff !important;
+  }
+
+  .react-datepicker__triangle {
+    display: none !important;
   }
 
   .form-shared .file-upload {
@@ -188,8 +259,13 @@
     @apply w-full cursor-pointer rounded-md bg-primary py-3 text-lg font-semibold text-black transition-colors hover:bg-primary/90 disabled:opacity-50;
   }
 
+  .form-shared .event-type-pill {
+    @apply w-fit rounded-md px-3 py-1 text-xs text-light-100;
+    background-color: #182830;
+  }
+
   #explore-btn {
-    @apply border-dark-200 bg-dark-100 flex w-fit cursor-pointer rounded-full border px-8 py-3.5 max-sm:w-full text-center transition-colors hover:border-primary hover:text-primary;
+    @apply flex w-fit cursor-pointer rounded-md bg-primary px-8 py-3 text-lg font-semibold text-black transition-colors hover:bg-primary/90 disabled:opacity-50;
     @apply flex-center gap-2;
   }
 
@@ -261,7 +337,7 @@
 
   #event {
     .header {
-      @apply flex w-2/3 flex-col items-start gap-4 max-lg:w-full mb-10;
+      @apply flex w-full flex-col items-start gap-4 max-lg:w-full mb-10;
     }
 
     .details {
@@ -270,19 +346,25 @@
       .content {
         @apply flex flex-2 flex-col gap-8 max-lg:w-full;
 
-        .banner {
-          @apply w-full h-auto rounded-lg object-cover;
-          aspect-ratio: 2/1;
+        .event-top-row {
+          @apply flex flex-row gap-8 items-start max-lg:flex-col max-lg:items-center;
         }
 
-        .agenda {
-          @apply flex flex-col gap-2;
+        .event-info-side {
+          @apply flex flex-col gap-6;
 
-          ul {
-            li {
-              @apply text-light-100 text-lg max-sm:text-sm;
-            }
+          h2 {
+            @apply mb-2;
           }
+        }
+
+        .banner {
+          @apply w-full h-auto rounded-lg object-cover;
+          aspect-ratio: 4/3;
+        }
+
+        .banner-wrapper {
+          @apply relative rounded-lg overflow-hidden max-w-md;
         }
       }
 
@@ -309,6 +391,10 @@
 
     .flex-row-gap-2 {
       @apply flex flex-row gap-2;
+    }
+
+    .event-type-pill {
+      @apply w-fit rounded-md bg-dark-200 px-3 py-1 text-sm text-light-100;
     }
   }
 

@@ -6,4 +6,5 @@ export interface EventData {
   venue: string;
   date: string;
   time: string;
+  eventType: string;
 }

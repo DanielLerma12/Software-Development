@@ -44,9 +44,6 @@ const AllEvents = async ({
     <section id="events-management">
       <div className="events-header">
         <h1>Event Management</h1>
-        <Link href="/events/create-event" className="add-event-btn">
-          Add New Event
-        </Link>
       </div>
       {pagedEvents.length > 0 ? (
         <div className="events-table-wrapper">
@@ -83,7 +80,15 @@ const AllEvents = async ({
                   <td>{event.venue}</td>
                   <td>{event.date}</td>
                   <td>{event.time}</td>
-                  <td>.</td>
+                  <td>
+                    {event.attendees && event.attendees.length > 0
+                      ? event.attendees
+                          .map((attendee) => {
+                            return attendee.split("@")[0];
+                          })
+                          .join(", ")
+                      : "—"}
+                  </td>
                   <td className="actions-cell">
                     <EditButton event={event} />
                     <span className="action-divider">|</span>

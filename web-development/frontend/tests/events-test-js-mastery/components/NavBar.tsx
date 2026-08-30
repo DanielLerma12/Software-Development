@@ -33,8 +33,7 @@ const Navbar = () => {
           </Link>
           <Link
             className={
-              pathname.startsWith("/events") &&
-              !pathname.startsWith("/events/create")
+              pathname.startsWith("/events") && !pathname.startsWith("/events/")
                 ? "nav-link active"
                 : "nav-link"
             }

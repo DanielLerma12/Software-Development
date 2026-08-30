@@ -7,10 +7,12 @@ const ExploreBtn = () => {
     <a
       href="#events"
       id="explore-btn"
-      className="mt-8 mx-auto"
+      className="mt-38 mx-auto"
       onClick={(e) => {
         e.preventDefault();
-        document.getElementById("events")?.scrollIntoView({ behavior: "smooth" });
+        document
+          .getElementById("events")
+          ?.scrollIntoView({ behavior: "smooth" });
       }}
     >
       Explore Events
@@ -19,7 +21,7 @@ const ExploreBtn = () => {
         alt="arrow-down"
         width={24}
         height={24}
-        className="w-6 h-6"
+        className="w-6 h-6 invert"
       />
     </a>
   );

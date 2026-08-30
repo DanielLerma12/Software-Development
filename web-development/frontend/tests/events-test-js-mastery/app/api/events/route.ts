@@ -2,6 +2,7 @@ import { v2 as cloudinary } from "cloudinary";
 import { NextRequest, NextResponse } from "next/server";
 import connectDB from "@/lib/mongodb";
 import Event from "@/database/event.model";
+import { sendEventCreatedEmail } from "@/lib/actions/email.actions";
 
 export async function GET() {
   try {
@@ -25,6 +26,30 @@ export async function POST(req: NextRequest) {
     await connectDB();
 
     const formData = await req.formData();
+
+    const title = formData.get("title");
+    const description = formData.get("description");
+    const venue = formData.get("venue");
+    const date = formData.get("date");
+    const time = formData.get("time");
+    const eventType = formData.get("eventType");
+
+    // validaciones
+
+    // vacios
+    if (
+      title === "" ||
+      description === "" ||
+      venue === "" ||
+      date === "" ||
+      time === "" ||
+      eventType === ""
+    ) {
+      return NextResponse.json(
+        { message: "All the fields are required" },
+        { status: 400 },
+      );
+    }
 
     const file = formData.get("image") as File;
 
@@ -52,16 +77,29 @@ export async function POST(req: NextRequest) {
 
     const imageUrl = (uploadResult as { secure_url: string }).secure_url;
 
+    const getString = (key: string) => {
+      const value = formData.get(key);
+
+      if (typeof value !== "string") {
+        throw new Error(`${key} is required`);
+      }
+
+      return value;
+    };
+
     const event = {
-      title: formData.get("title"),
-      description: formData.get("description"),
-      venue: formData.get("venue"),
-      date: formData.get("date"),
-      time: formData.get("time"),
+      title: getString("title"),
+      description: getString("description"),
+      venue: getString("venue"),
+      date: getString("date"),
+      time: getString("time"),
+      eventType: getString("eventType"),
       image: imageUrl,
     };
 
     const createdEvent = await Event.create(event);
+
+    sendEventCreatedEmail(createdEvent);
 
     return NextResponse.json(
       {
