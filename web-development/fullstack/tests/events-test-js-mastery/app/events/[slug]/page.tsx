@@ -4,8 +4,8 @@ import { Suspense } from "react";
 import BookingSection from "@/components/BookingSection";
 import { getSimilarEventsBySlug } from "@/lib/actions/event.actions";
 import SimilarEventsToggle from "@/components/SimilarEventsToggle";
-
-const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
+import connectDB from "@/lib/mongodb";
+import Event from "@/database/event.model";
 
 const EventDetailItem = ({
   icon,
@@ -47,21 +47,27 @@ const EventDetails = async ({
 }) => {
   const { slug } = await params;
 
-  const request = await fetch(`${BASE_URL}/api/events/${slug}`);
-  const {
-    event: {
-      title,
-      description,
-      image,
-      date,
-      time,
-      venue,
-      eventType,
-      attendees,
-    },
-  } = await request.json();
+  let event;
+  try {
+    await connectDB();
+    event = await Event.findOne({ slug }).lean();
+  } catch (e) {
+    console.error("Failed to fetch event:", e);
+    notFound();
+  }
 
-  if (!description) return notFound();
+  if (!event) return notFound();
+
+  const {
+    title,
+    description,
+    image,
+    date,
+    time,
+    venue,
+    eventType,
+    attendees,
+  } = event;
 
   const similarEvents = JSON.parse(
     JSON.stringify(await getSimilarEventsBySlug(slug)),
