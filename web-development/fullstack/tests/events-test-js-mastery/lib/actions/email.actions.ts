@@ -1,3 +1,5 @@
+"use server";
+
 import nodemailer from "nodemailer";
 import { type IEvent } from "@/database/event.model";
 
