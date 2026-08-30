@@ -42,3 +42,8 @@ next-env.d.ts
 
 # Private images
 /public/images
+
+# Docker
+Dockerfile
+docker-compose.yml
+.dockerignore
