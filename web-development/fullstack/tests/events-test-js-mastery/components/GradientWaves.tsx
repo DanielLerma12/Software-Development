@@ -15,9 +15,9 @@ const hexToRgb = (hex: string): [number, number, number] => {
 };
 
 const detailToSteps = (detail: string): number => {
-  if (detail === "low") return 40.0;
-  if (detail === "high") return 110.0;
-  return 70.0;
+  if (detail === "low") return 30.0;
+  if (detail === "high") return 60.0;
+  return 45.0;
 };
 
 const vertex = `#version 300 es
@@ -72,7 +72,7 @@ float plasma(vec3 r, vec2 freq, vec4 tc) {
 
 float raymarch(vec3 pos, vec3 dir, vec2 freq, vec4 tc) {
   float dist = 0.0;
-  for (int i = 0; i < 128; i++) {
+  for (int i = 0; i < 64; i++) {
     if (float(i) >= uSteps) break;
     float dscene = plasma(pos + dist * dir, freq, tc);
     if (abs(dscene) < 0.1) break;
@@ -191,12 +191,17 @@ const GradientWaves: React.FC<GradientWavesProps> = ({
     const container = containerRef.current;
     if (!container) return;
 
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
+    if (prefersReducedMotion) return;
+
     const renderer = new Renderer({
       webgl: 2,
       alpha: true,
       premultipliedAlpha: true,
       antialias: false,
-      dpr: Math.min(window.devicePixelRatio || 1, 2),
+      dpr: Math.min(window.devicePixelRatio || 1, 1.5),
     });
 
     const gl = renderer.gl;
@@ -275,8 +280,15 @@ const GradientWaves: React.FC<GradientWavesProps> = ({
     let isVisible = true;
     let isPageVisible = !document.hidden;
     const t0 = performance.now();
+    let lastFrameTime = 0;
+    const FRAME_INTERVAL = 1000 / 30;
 
     const loop = (t: number) => {
+      if (t - lastFrameTime < FRAME_INTERVAL) {
+        raf = requestAnimationFrame(loop);
+        return;
+      }
+      lastFrameTime = t;
       program.uniforms.iTime.value = (t - t0) * 0.001;
       const tx = enableMouseRef.current ? targetMouse[0] : 0.5;
       const ty = enableMouseRef.current ? targetMouse[1] : 0.5;

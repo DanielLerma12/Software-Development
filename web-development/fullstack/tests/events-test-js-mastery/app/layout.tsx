@@ -1,8 +1,12 @@
 import type { Metadata } from "next";
 import { Schibsted_Grotesk, Martian_Mono } from "next/font/google";
 import "./globals.css";
-import GradientWaves from "@/components/GradientWaves";
+import dynamic from "next/dynamic";
 import NavBar from "@/components/NavBar";
+
+const GradientWaves = dynamic(() => import("@/components/GradientWaves"), {
+  ssr: false,
+});
 
 const schibstedGrotesk = Schibsted_Grotesk({
   variable: "--font-schibsted-grotesk",
@@ -39,7 +43,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           zoom={1.15}
           height={7.7}
           fogDepth={10}
-          detail="high"
+          detail="low"
           brightness={1}
           opacity={0.5}
           mouseInteraction={false}
