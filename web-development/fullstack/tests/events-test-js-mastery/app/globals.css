@@ -71,10 +71,13 @@ html {
     @apply bg-background text-foreground;
   }
 
+  /* Responsive: sm:px-10 en tablet+, px-4 en móvil */
   main {
-    @apply mx-auto container flex flex-col sm:px-10 px-5 py-10;
+    @apply mx-auto container flex flex-col sm:px-10 px-4 py-10;
+    overflow: hidden;
   }
 
+  /* Responsive: text-5xl en desktop, text-3xl en móvil */
   h1 {
     @apply text-gradient text-5xl font-semibold leading-snug max-sm:text-3xl;
   }
@@ -90,15 +93,19 @@ html {
 
 @layer components {
   .form-shared {
-    @apply flex flex-col gap-6;
+    /* Responsive: sm:gap-6 en tablet+, gap-4 en móvil */
+    @apply flex flex-col sm:gap-6 gap-4;
   }
 
   .form-shared form {
-    @apply flex flex-col gap-5;
+    /* Responsive: sm:gap-5 en tablet+, gap-4 en móvil */
+    @apply flex flex-col sm:gap-5 gap-4;
   }
 
+  /* Responsive: sm:p-8 en tablet+, p-3 en móvil */
   .form-shared .form-container {
-    @apply rounded-xl border border-dark-200 bg-dark-100 p-8;
+    @apply rounded-xl border border-dark-200 bg-dark-100 sm:p-8 p-3;
+    overflow: hidden;
   }
 
   .form-shared .form-group {
@@ -184,6 +191,27 @@ html {
     background-image: none;
   }
 
+  /* Responsive: selects más compactos en tablet */
+  @media (max-width: 768px) {
+    .form-shared .time-inputs select {
+      padding: 0.625rem 1rem;
+      min-width: 2.75rem;
+    }
+  }
+
+  /* Responsive: selects más compactos en móvil */
+  @media (max-width: 480px) {
+    .form-shared .time-inputs select {
+      padding: 0.5rem 0.25rem;
+      min-width: 0;
+      font-size: 0.75rem;
+    }
+
+    .form-shared .time-separator {
+      font-size: 0.75rem;
+    }
+  }
+
   .form-shared .date-picker-wrapper {
     @apply relative w-full;
     gap: 0;
@@ -251,11 +279,13 @@ html {
   }
 
   .form-shared .file-upload {
-    @apply flex cursor-pointer items-center justify-center gap-3 rounded-md border border-dashed border-dark-200 bg-dark-200 px-4 py-6 text-sm text-light-200 transition-colors hover:border-primary hover:text-light-100;
+    /* Responsive: sm:px-4 sm:py-6 en tablet+, px-3 py-4 en móvil */
+    @apply flex cursor-pointer items-center justify-center gap-3 rounded-md border border-dashed border-dark-200 bg-dark-200 sm:px-4 sm:py-6 px-3 py-4 text-sm text-light-200 transition-colors hover:border-primary hover:text-light-100;
   }
 
   .form-shared .submit-btn {
-    @apply w-full cursor-pointer rounded-md bg-primary py-3 text-lg font-semibold text-black transition-colors hover:bg-primary/90 disabled:opacity-50;
+    /* Responsive: sm:py-3 sm:text-lg en tablet+, py-2.5 text-base en móvil */
+    @apply w-full cursor-pointer rounded-md bg-primary sm:py-3 py-2.5 sm:text-lg text-base font-semibold text-black transition-colors hover:bg-primary/90 disabled:opacity-50;
   }
 
   .form-shared .event-type-pill {
@@ -272,6 +302,7 @@ html {
     @apply glass sticky top-0 z-50;
 
     nav {
+      /* Responsive: sm:px-10 en tablet+, px-5 en móvil */
       @apply flex flex-row justify-between mx-auto container sm:px-10 px-5 py-4;
     }
 
@@ -279,6 +310,7 @@ html {
       @apply flex flex-row items-center gap-2;
 
       p {
+        /* Responsive: oculta texto del logo en móvil */
         @apply text-xl font-bold italic max-sm:hidden;
       }
     }
@@ -305,6 +337,7 @@ html {
     }
   }
 
+  /* Responsive: grid-cols-1 → sm:grid-cols-2 → md:grid-cols-3 */
   .events {
     @apply grid md:grid-cols-3 gap-10 sm:grid-cols-2 grid-cols-1;
   }
@@ -339,12 +372,14 @@ html {
       @apply flex w-full flex-col items-start gap-4 max-lg:w-full mb-10;
     }
 
+    /* Responsive: flex-col en móvil, lg:flex-row en desktop */
     .details {
       @apply flex w-full flex-col lg:flex-row gap-12 items-start mt-12 max-lg:items-center;
 
       .content {
         @apply flex flex-2 flex-col gap-8 max-lg:w-full;
 
+        /* Responsive: flex-row en desktop, max-lg:flex-col en móvil */
         .event-top-row {
           @apply flex flex-row gap-8 items-start max-lg:flex-col max-lg:items-center;
         }
@@ -380,6 +415,7 @@ html {
       @apply font-schibsted-grotesk text-2xl font-bold;
     }
 
+    /* Responsive: text-lg en desktop, text-sm en móvil */
     p {
       @apply text-light-100 text-lg max-sm:text-sm;
     }
@@ -398,21 +434,25 @@ html {
   }
 
   #book-event {
-    @apply flex flex-col gap-6;
+    /* Responsive: sm:gap-6 en tablet+, gap-4 en móvil */
+    @apply flex flex-col sm:gap-6 gap-4;
 
     form {
-      @apply flex flex-col gap-6;
+      /* Responsive: sm:gap-6 en tablet+, gap-4 en móvil */
+      @apply flex flex-col sm:gap-6 gap-4;
 
       div {
         @apply flex flex-col gap-2;
 
         input {
-          @apply bg-dark-200 rounded-[6px] px-5 py-2.5;
+          /* Responsive: sm:px-5 en tablet+, px-4 en móvil */
+          @apply bg-dark-200 rounded-[6px] sm:px-5 px-4 py-2.5;
         }
       }
 
       button {
-        @apply bg-primary hover:bg-primary/90 w-full cursor-pointer items-center justify-center rounded-[6px] px-4 py-2.5 text-lg font-semibold text-black;
+        /* Responsive: sm:py-2.5 sm:text-lg en tablet+, py-2 text-base en móvil */
+        @apply bg-primary hover:bg-primary/90 w-full cursor-pointer items-center justify-center rounded-[6px] sm:px-4 px-4 sm:py-2.5 py-2 sm:text-lg text-base font-semibold text-black;
       }
     }
   }
@@ -425,11 +465,12 @@ html {
 #events-management {
   @apply flex flex-col gap-6;
 
+  /* Responsive: h1 más pequeño en móvil */
   .events-header {
     @apply flex items-center justify-between;
 
     h1 {
-      @apply text-4xl font-bold;
+      @apply sm:text-4xl text-2xl font-bold;
     }
   }
 
@@ -437,8 +478,9 @@ html {
     @apply bg-primary hover:bg-primary/90 cursor-pointer rounded-[6px] px-4 py-2.5 text-sm font-semibold text-black transition-colors;
   }
 
+  /* Responsive: scroll horizontal en móvil */
   .events-table-wrapper {
-    @apply overflow-hidden rounded-lg border border-dark-200;
+    @apply overflow-x-auto rounded-lg border border-dark-200;
   }
 
   .events-table {
@@ -474,6 +516,26 @@ html {
       }
     }
 
+    /* Responsive: oculta columnas secundarias en móvil */
+    @media (max-width: 640px) {
+      th, td {
+        @apply hidden;
+      }
+
+      /* Muestra solo Events y Actions */
+      th:nth-child(1),
+      td:nth-child(1),
+      th:nth-child(6),
+      td:nth-child(6) {
+        @apply table-cell;
+      }
+
+      th:nth-child(1),
+      td:nth-child(1) {
+        @apply text-left;
+      }
+    }
+
     .event-name-cell {
       @apply flex items-center gap-3;
 
@@ -503,6 +565,7 @@ html {
     }
   }
 
+  /* Responsive: paginación se apila en móvil */
   .pagination {
     @apply grid items-center pt-4;
     grid-template-columns: 1fr auto 1fr;
@@ -527,14 +590,27 @@ html {
   .pagination-info {
     @apply text-center text-sm text-light-200;
   }
+
+  /* Responsive: botones más compactos en móvil */
+  @media (max-width: 640px) {
+    .pagination-btn {
+      @apply px-4 py-2 text-xs;
+    }
+
+    .pagination-info {
+      @apply text-xs;
+    }
+  }
 }
 
+/* Responsive: sm:gap-6 en tablet+, gap-4 en móvil / sm:pb-10 en tablet+, pb-6 en móvil */
 #create-event {
-  @apply mx-auto flex max-w-2xl flex-col gap-6 pb-10;
+  @apply mx-auto flex max-w-2xl flex-col sm:gap-6 gap-4 sm:pb-10 pb-6;
 }
 
+/* Responsive: sm:mb-4 en tablet+, mb-2 en móvil */
 #create-event > h1 {
-  @apply text-center mb-4 text-gradient;
+  @apply text-center sm:mb-4 mb-2 text-gradient;
 }
 
 .modal-overlay {
@@ -549,12 +625,14 @@ html {
   backdrop-filter: blur(4px);
 }
 
+/* Responsive: sm:p-8 en tablet+, p-4 en móvil / sm:gap-6 en tablet+, gap-4 en móvil */
 .modal-content {
-  @apply relative max-h-[90vh] w-full max-w-3xl overflow-y-auto rounded-xl p-8 flex flex-col gap-6;
+  @apply relative max-h-[90vh] w-full max-w-3xl overflow-y-auto rounded-xl sm:p-8 p-4 flex flex-col sm:gap-6 gap-4;
 }
 
+/* Responsive: sm:mb-4 en tablet+, mb-2 en móvil */
 .modal-content > h1 {
-  @apply text-center mb-4 text-gradient;
+  @apply text-center sm:mb-4 mb-2 text-gradient;
 }
 
 .modal-content .modal-close {
