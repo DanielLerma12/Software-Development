@@ -6,7 +6,49 @@ import { useRouter } from "next/navigation";
 import { toast } from "@/components/ui/toast";
 import Form from "@/components/Form";
 
-const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
+const MAX_SIZE = 1200;
+
+const compressImage = (file: File): Promise<File> => {
+  return new Promise((resolve) => {
+    const img = new Image();
+    const url = URL.createObjectURL(file);
+
+    img.onload = () => {
+      URL.revokeObjectURL(url);
+
+      let { width, height } = img;
+      if (width > MAX_SIZE || height > MAX_SIZE) {
+        if (width > height) {
+          height = Math.round((height / width) * MAX_SIZE);
+          width = MAX_SIZE;
+        } else {
+          width = Math.round((width / height) * MAX_SIZE);
+          height = MAX_SIZE;
+        }
+      }
+
+      const canvas = document.createElement("canvas");
+      canvas.width = width;
+      canvas.height = height;
+      const ctx = canvas.getContext("2d")!;
+      ctx.drawImage(img, 0, 0, width, height);
+
+      canvas.toBlob(
+        (blob) => {
+          const compressed = new File([blob!], file.name, {
+            type: "image/jpeg",
+            lastModified: Date.now(),
+          });
+          resolve(compressed);
+        },
+        "image/jpeg",
+        0.8,
+      );
+    };
+
+    img.src = url;
+  });
+};
 
 function parseTime(time: string): { hour: string; min: string; period: string } {
   const timePart = time.trim();
@@ -88,10 +130,13 @@ const EditEventModal = ({ isOpen, onClose, event }: EditEventModalProps) => {
       `${startHour}:${startMin} ${startPeriod} to ${endHour}:${endMin} ${endPeriod}`,
     );
     formData.append("venue", venue);
-    if (image instanceof File) formData.append("image", image);
+    if (image instanceof File) {
+      const compressed = await compressImage(image);
+      formData.append("image", compressed);
+    }
 
     try {
-      const res = await fetch(`${BASE_URL}/api/events/${event.slug}`, {
+      const res = await fetch(`/api/events/${event.slug}`, {
         method: "PATCH",
         body: formData,
       });

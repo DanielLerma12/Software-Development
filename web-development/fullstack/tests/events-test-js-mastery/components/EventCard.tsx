@@ -2,11 +2,9 @@ import Link from "next/link";
 import Image from "next/image";
 import { type EventData } from "@/lib/types";
 
-const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
-
 const EventCard = ({ title, image, slug, venue, date, time }: EventData) => {
   return (
-    <Link href={`${BASE_URL}/events/${slug}`} id="event-card">
+    <Link href={`/events/${slug}`} id="event-card">
       <Image
         src={image}
         alt={title}
