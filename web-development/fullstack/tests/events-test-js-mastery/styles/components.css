@@ -1,0 +1,222 @@
+@layer components {
+  .form-shared {
+    /* Responsive: sm:gap-6 en tablet+, gap-4 en móvil */
+    @apply flex flex-col sm:gap-6 gap-4;
+  }
+
+  .form-shared form {
+    /* Responsive: sm:gap-5 en tablet+, gap-4 en móvil */
+    @apply flex flex-col sm:gap-5 gap-4;
+  }
+
+  /* Responsive: sm:p-8 en tablet+, p-3 en móvil / dentro del modal: más compacto */
+  .form-shared .form-container {
+    @apply rounded-xl border border-dark-200 bg-dark-100 sm:p-8 p-3;
+    overflow: hidden;
+  }
+
+  /* Modal: form-container más compacto */
+  .modal-content .form-container {
+    @apply sm:p-6 p-2;
+  }
+
+  .form-shared .form-group {
+    @apply flex flex-col gap-2 flex-1;
+  }
+
+  /* Modal: form-group más compacto */
+  .modal-content .form-group {
+    @apply gap-1;
+  }
+
+  .form-shared .form-group label {
+    @apply text-sm text-light-200;
+  }
+
+  .form-shared .form-group input,
+  .form-shared .form-group select,
+  .form-shared .form-group textarea {
+    @apply w-full rounded-md border border-dark-200 bg-dark-200 px-4 py-3 text-sm text-light-100 placeholder:text-light-200/50 outline-none transition-colors focus:border-primary;
+  }
+
+  .form-shared .form-group select {
+    @apply cursor-pointer appearance-none bg-[url('/icons/arrow-down.svg')] bg-size-[14px] bg-position-[right_12px_center] bg-no-repeat pr-10;
+  }
+
+  .form-shared .form-group select option {
+    background-color: #182830;
+    color: #e7f2ff;
+  }
+
+  .form-shared .form-group textarea {
+    @apply resize-none;
+  }
+
+  .form-shared .input-with-icon {
+    @apply flex items-center gap-2;
+  }
+
+  .form-shared .input-with-icon input {
+    @apply flex-1 relative rounded-md border border-dark-200 bg-dark-200 px-4 py-3 text-sm text-light-100 placeholder:text-light-200/50 outline-none transition-colors focus:border-primary;
+  }
+
+  .form-shared .input-with-icon:focus-within input {
+    border-color: var(--primary);
+  }
+
+  .form-shared .input-with-icon select {
+    @apply cursor-pointer rounded-md border border-dark-200 bg-dark-200 px-4 py-3 text-sm text-light-100 outline-none transition-colors focus:border-primary;
+    min-width: 2.5rem;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-image: url("/icons/arrow-down.svg");
+    background-size: 14px;
+    background-position: right 10px center;
+    background-repeat: no-repeat;
+    background-color: #182830;
+    color-scheme: dark;
+  }
+
+  .form-shared .input-with-icon select option {
+    background-color: #182830;
+    color: #e7f2ff;
+  }
+
+  .form-shared .input-with-icon img,
+  .form-shared .input-with-icon svg {
+    @apply shrink-0 opacity-60;
+  }
+
+  .form-shared .date-picker-wrapper > img {
+    margin-right: 0.5rem;
+  }
+
+  .form-shared .time-separator {
+    @apply text-light-200 text-sm;
+  }
+
+  .form-shared .time-inputs {
+    @apply gap-2 flex-1;
+  }
+
+  .form-shared .time-inputs select {
+    @apply w-auto text-center text-sm;
+    min-width: 3.25rem;
+    flex: 1 1 auto;
+    padding: 0.75rem 1.5rem;
+    background-image: none;
+  }
+
+  /* Responsive: selects más compactos en tablet */
+  @media (max-width: 768px) {
+    .form-shared .time-inputs select {
+      padding: 0.625rem 1rem;
+      min-width: 2.75rem;
+    }
+  }
+
+  /* Responsive: selects más compactos en móvil */
+  @media (max-width: 480px) {
+    .form-shared .time-inputs select {
+      padding: 0.5rem 0.25rem;
+      min-width: 0;
+      font-size: 0.75rem;
+    }
+
+    .form-shared .time-separator {
+      font-size: 0.75rem;
+    }
+  }
+
+  .form-shared .date-picker-wrapper {
+    @apply relative w-full;
+    gap: 0;
+  }
+
+  .form-shared .date-picker-wrapper .react-datepicker-wrapper {
+    @apply w-full;
+  }
+
+  .form-shared .date-picker-wrapper .react-datepicker__input-container input {
+    @apply w-full cursor-pointer rounded-md border border-dark-200 bg-dark-200 px-4 py-3 text-sm text-light-100 placeholder:text-light-200/50 outline-none transition-colors focus:border-primary;
+    color-scheme: dark;
+  }
+
+  .react-datepicker {
+    background-color: #182830 !important;
+    border: 1px solid #2a3a44 !important;
+    border-radius: 0.5rem !important;
+    font-family: inherit !important;
+  }
+
+  .react-datepicker__header {
+    background-color: #182830 !important;
+    border-bottom: 1px solid #2a3a44 !important;
+  }
+
+  .react-datepicker__current-month,
+  .react-datepicker__day-name {
+    color: #e7f2ff !important;
+  }
+
+  .react-datepicker__day {
+    color: #e7f2ff !important;
+    border-radius: 0.375rem !important;
+  }
+
+  .react-datepicker__day:hover {
+    background-color: #2a3a44 !important;
+  }
+
+  .react-datepicker__day--selected,
+  .react-datepicker__day--keyboard-selected {
+    background-color: #59deca !important;
+    color: #0d161a !important;
+  }
+
+  .react-datepicker__day--outside-month {
+    color: #555 !important;
+  }
+
+  .react-datepicker__navigation {
+    border: 0.4rem solid transparent !important;
+  }
+
+  .react-datepicker__navigation--previous {
+    border-right-color: #e7f2ff !important;
+  }
+
+  .react-datepicker__navigation--next {
+    border-left-color: #e7f2ff !important;
+  }
+
+  .react-datepicker__triangle {
+    display: none !important;
+  }
+
+  .form-shared .file-upload {
+    /* Responsive: sm:px-4 sm:py-6 en tablet+, px-3 py-4 en móvil */
+    @apply flex cursor-pointer items-center justify-center gap-3 rounded-md border border-dashed border-dark-200 bg-dark-200 sm:px-4 sm:py-6 px-3 py-4 text-sm text-light-200 transition-colors hover:border-primary hover:text-light-100;
+  }
+
+  /* Modal: file upload más compacto */
+  .modal-content .file-upload {
+    @apply sm:py-4 py-3;
+  }
+
+  .form-shared .submit-btn {
+    /* Responsive: sm:py-3 sm:text-lg en tablet+, py-2.5 text-base en móvil */
+    @apply w-full cursor-pointer rounded-md bg-primary sm:py-3 py-2.5 sm:text-lg text-base font-semibold text-black transition-colors hover:bg-primary/90 disabled:opacity-50;
+  }
+
+  /* Modal: submit más compacto */
+  .modal-content .submit-btn {
+    @apply sm:py-2.5 py-2;
+  }
+
+  .form-shared .event-type-pill {
+    @apply w-fit rounded-md px-3 py-1 text-xs text-light-100;
+    background-color: #182830;
+  }
+}

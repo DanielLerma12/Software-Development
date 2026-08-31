@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Suspense } from "react";
-import { type IEvent } from "@/database/event.model";
+import { type EventData } from "@/lib/types";
 import EditButton from "@/components/EditButton";
 import DeleteButton from "@/components/DeleteButton";
 import { Toaster } from "@/components/ui/toast";
@@ -31,10 +31,25 @@ const AllEvents = async ({
 
   const currentPage = Math.max(1, Number(page) || 1);
 
-  let events: IEvent[] = [];
+  let events: Array<
+    EventData & { attendees?: string[] }
+  > = [];
   try {
     await connectDB();
-    events = await Event.find().sort({ createdAt: -1 }).lean();
+    const rawEvents = await Event.find()
+      .sort({ createdAt: -1 })
+      .lean();
+    events = rawEvents.map((e) => ({
+      title: e.title,
+      slug: e.slug,
+      description: e.description,
+      image: e.image,
+      venue: e.venue,
+      date: e.date,
+      time: e.time,
+      eventType: e.eventType,
+      attendees: e.attendees,
+    }));
   } catch (e) {
     console.error("Failed to fetch events:", e);
   }
@@ -43,7 +58,7 @@ const AllEvents = async ({
   const totalPages = Math.max(1, Math.ceil(totalCount / PAGE_SIZE));
   const safePage = Math.min(currentPage, totalPages);
   const start = (safePage - 1) * PAGE_SIZE;
-  const pagedEvents: IEvent[] = events?.slice(start, start + PAGE_SIZE) ?? [];
+  const pagedEvents = events?.slice(start, start + PAGE_SIZE) ?? [];
 
   return (
     <section id="events-management">
