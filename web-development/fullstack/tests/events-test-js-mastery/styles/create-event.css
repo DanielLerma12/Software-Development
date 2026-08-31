@@ -1,0 +1,9 @@
+/* Responsive: sm:gap-6 en tablet+, gap-4 en móvil / sm:pb-10 en tablet+, pb-6 en móvil */
+#create-event {
+  @apply mx-auto flex max-w-2xl flex-col sm:gap-6 gap-4 sm:pb-10 pb-6;
+}
+
+/* Responsive: sm:mb-4 en tablet+, mb-2 en móvil */
+#create-event > h1 {
+  @apply text-center sm:mb-4 mb-2 text-gradient;
+}

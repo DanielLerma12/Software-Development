@@ -1,0 +1,172 @@
+#events {
+  scroll-margin-top: 5rem;
+}
+
+#events-management {
+  @apply flex flex-col gap-6;
+
+  /* Responsive: h1 más pequeño en móvil */
+  .events-header {
+    @apply flex items-center justify-between;
+
+    h1 {
+      @apply sm:text-4xl text-2xl font-bold;
+    }
+  }
+
+  .add-event-btn {
+    @apply bg-primary hover:bg-primary/90 cursor-pointer rounded-[6px] px-4 py-2.5 text-sm font-semibold text-black transition-colors;
+  }
+
+  /* Responsive: scroll horizontal en móvil */
+  .events-table-wrapper {
+    @apply overflow-x-auto rounded-lg border border-dark-200;
+  }
+
+  .events-table {
+    @apply w-full border-collapse text-sm;
+
+    thead {
+      tr {
+        @apply border-b border-dark-200 bg-dark-200/50;
+      }
+
+      th {
+        @apply px-4 py-3 text-center font-medium text-light-200;
+      }
+    }
+
+    tbody {
+      @apply bg-dark-100/80;
+
+      tr {
+        @apply border-b border-dark-200 transition-colors hover:bg-dark-200/30;
+
+        &:last-child {
+          @apply border-b-0;
+        }
+      }
+
+      td {
+        @apply px-4 py-3 text-center text-light-100 border-r border-dark-200;
+
+        &:last-child {
+          @apply border-r-0;
+        }
+      }
+    }
+
+    /* Responsive: oculta columnas secundarias en móvil */
+    @media (max-width: 640px) {
+      th, td {
+        @apply hidden;
+      }
+
+      /* Muestra solo Events y Actions */
+      th:nth-child(1),
+      td:nth-child(1),
+      th:nth-child(6),
+      td:nth-child(6) {
+        @apply table-cell;
+      }
+
+      th:nth-child(1),
+      td:nth-child(1) {
+        @apply text-left;
+      }
+    }
+
+    .event-name-cell {
+      @apply flex items-center gap-3;
+
+      .event-name-link {
+        @apply flex items-center gap-3 text-light-100 no-underline hover:text-primary transition-colors;
+      }
+
+      .event-thumbnail {
+        @apply h-10 w-10 rounded-md object-cover;
+      }
+    }
+
+    .actions-cell {
+      @apply text-center;
+
+      .action-edit {
+        @apply cursor-pointer text-primary hover:text-primary/80 text-sm transition-colors mr-2;
+      }
+
+      .action-divider {
+        @apply text-light-200 mr-2 text-base;
+      }
+
+      .action-delete {
+        @apply cursor-pointer bg-transparent p-0 text-sm text-light-100 transition-colors hover:text-light-200;
+      }
+    }
+  }
+
+  /* Responsive: paginación se apila en móvil */
+  .pagination {
+    @apply grid items-center pt-4;
+    grid-template-columns: 1fr auto 1fr;
+  }
+
+  .pagination-btn {
+    @apply rounded-lg border border-dark-200 bg-dark-100 px-6 py-2.5 text-sm text-light-100 transition-colors hover:bg-dark-200;
+
+    &.disabled {
+      @apply pointer-events-none opacity-50;
+    }
+
+    &:first-child {
+      @apply justify-self-start;
+    }
+
+    &:last-child {
+      @apply justify-self-end;
+    }
+  }
+
+  .pagination-info {
+    @apply text-center text-sm text-light-200;
+  }
+
+  /* Responsive: botones más compactos en móvil */
+  @media (max-width: 640px) {
+    .pagination-btn {
+      @apply px-4 py-2 text-xs;
+    }
+
+    .pagination-info {
+      @apply text-xs;
+    }
+  }
+}
+
+/* Responsive: padding más pequeño en móvil */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(0, 0, 0, 0.6);
+  padding: 0.5rem;
+  backdrop-filter: blur(4px);
+  overflow-y: auto;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+/* Responsive: sm:p-6 en tablet+, p-3 en móvil / sm:gap-5 en tablet+, gap-3 en móvil */
+.modal-content {
+  @apply relative w-full max-w-3xl rounded-xl sm:p-6 p-3 flex flex-col sm:gap-5 gap-3 my-4;
+}
+
+/* Responsive: sm:mb-4 en tablet+, mb-2 en móvil */
+.modal-content > h1 {
+  @apply text-center sm:mb-4 mb-1 text-gradient;
+}
+
+.modal-content .modal-close {
+  @apply absolute right-3 top-3 text-2xl text-light-200 transition-colors hover:text-light-100 cursor-pointer;
+}
