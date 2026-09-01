@@ -3,39 +3,6 @@ import connectDB from "@/lib/mongodb";
 import Event from "@/database/event.model";
 import { v2 as cloudinary } from "cloudinary";
 
-export async function GET(
-  _request: Request,
-  { params }: { params: Promise<{ slug: string }> },
-) {
-  try {
-    await connectDB();
-
-    const { slug } = await params;
-
-    if (!slug || typeof slug !== "string" || slug.trim() === "") {
-      return NextResponse.json(
-        { message: "Invalid or missing slug parameter" },
-        { status: 400 },
-      );
-    }
-
-    const event = await Event.findOne({ slug });
-
-    if (!event) {
-      return NextResponse.json({ message: "Event not found" }, { status: 404 });
-    }
-
-    return NextResponse.json({ event }, { status: 200 });
-  } catch (e) {
-    console.error("GET /api/events error:", e);
-    const message = e instanceof Error ? e.message : "Unknown error";
-    return NextResponse.json(
-      { message: "Failed to fetch events", error: message },
-      { status: 500 },
-    );
-  }
-}
-
 export async function DELETE(
   _request: Request,
   { params }: { params: Promise<{ slug: string }> },
