@@ -4,23 +4,6 @@ import connectDB from "@/lib/mongodb";
 import Event from "@/database/event.model";
 import { sendEventCreatedEmail } from "@/lib/actions/email.actions";
 
-export async function GET() {
-  try {
-    await connectDB();
-
-    const events = await Event.find().sort({ createdAt: -1 });
-
-    return NextResponse.json({ events }, { status: 200 });
-  } catch (e) {
-    console.error("GET /api/events error:", e);
-    const message = e instanceof Error ? e.message : "Unknown error";
-    return NextResponse.json(
-      { message: "Failed to fetch events", error: message },
-      { status: 500 },
-    );
-  }
-}
-
 export async function POST(req: NextRequest) {
   try {
     await connectDB();
