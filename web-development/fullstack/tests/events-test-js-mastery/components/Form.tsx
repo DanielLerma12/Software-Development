@@ -1,5 +1,6 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import dynamic from "next/dynamic";
 import "react-datepicker/dist/react-datepicker.css";
@@ -70,6 +71,8 @@ interface FormProps {
   setImage: (v: File | string | null) => void;
   description: string;
   setDescription: (v: string) => void;
+  recipients: string[];
+  setRecipients: (v: string[]) => void;
 }
 
 const Form = ({
@@ -100,7 +103,32 @@ const Form = ({
   setImage,
   description,
   setDescription,
+  recipients,
+  setRecipients,
 }: FormProps) => {
+  const [availableEmails, setAvailableEmails] = useState<string[]>([]);
+  const [loadingEmails, setLoadingEmails] = useState(true);
+
+  useEffect(() => {
+    let isMounted = true;
+    fetch("/api/registered-emails")
+      .then((res) => res.json())
+      .then((data) => {
+        if (isMounted && Array.isArray(data.emails)) {
+          setAvailableEmails(data.emails);
+        }
+      })
+      .catch((err) => {
+        console.error("Failed to load registered emails:", err);
+      })
+      .finally(() => {
+        if (isMounted) setLoadingEmails(false);
+      });
+
+    return () => {
+      isMounted = false;
+    };
+  }, []);
   return (
     <div className="form-container">
       <form onSubmit={onSubmit}>
@@ -310,6 +338,95 @@ const Form = ({
             onChange={(e) => setDescription(e.target.value)}
             required
           />
+        </div>
+
+        <div className="form-group">
+          <div className="flex items-center justify-between">
+            <label htmlFor="recipients">
+              Notification Recipients (Optional)
+            </label>
+            {availableEmails.length > 0 && (
+              <div className="flex items-center gap-3">
+                <button
+                  type="button"
+                  onClick={() => setRecipients([...availableEmails])}
+                  className="text-xs text-primary hover:underline cursor-pointer"
+                >
+                  Select All
+                </button>
+                {recipients.length > 0 && (
+                  <button
+                    type="button"
+                    onClick={() => setRecipients([])}
+                    className="text-xs text-light-200 hover:text-white cursor-pointer"
+                  >
+                    Clear
+                  </button>
+                )}
+              </div>
+            )}
+          </div>
+
+          <select
+            id="recipients"
+            value=""
+            disabled={loadingEmails || availableEmails.length === 0}
+            onChange={(e) => {
+              const val = e.target.value;
+              if (val && !recipients.includes(val)) {
+                setRecipients([...recipients, val]);
+              }
+            }}
+          >
+            <option value="" hidden>
+              {loadingEmails
+                ? "Loading registered emails..."
+                : availableEmails.length === 0
+                  ? "No registered emails found"
+                  : recipients.length === availableEmails.length
+                    ? "All registered emails selected"
+                    : "Select registered email to notify"}
+            </option>
+            {availableEmails.map((email) => {
+              const isSelected = recipients.includes(email);
+              return (
+                <option
+                  key={email}
+                  value={email}
+                  disabled={isSelected}
+                >
+                  {email} {isSelected ? "✓" : ""}
+                </option>
+              );
+            })}
+          </select>
+
+          {recipients.length > 0 ? (
+            <div className="flex flex-wrap gap-2 mt-2">
+              {recipients.map((email) => (
+                <span
+                  key={email}
+                  className="event-type-pill flex items-center gap-1"
+                >
+                  {email}
+                  <button
+                    type="button"
+                    onClick={() =>
+                      setRecipients(recipients.filter((r) => r !== email))
+                    }
+                    className="text-light-200 hover:text-white text-xs font-bold ml-1 cursor-pointer"
+                    title="Remove email"
+                  >
+                    ✕
+                  </button>
+                </span>
+              ))}
+            </div>
+          ) : (
+            <p className="text-xs text-light-200/60 mt-1">
+              No recipients selected. No notification will be sent.
+            </p>
+          )}
         </div>
 
         <button type="submit" className="submit-btn" disabled={submitting}>

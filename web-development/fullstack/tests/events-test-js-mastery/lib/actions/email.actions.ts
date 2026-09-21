@@ -3,7 +3,43 @@
 import nodemailer from "nodemailer";
 import { type IEvent } from "@/database/event.model";
 
-export const sendEventCreatedEmail = async (event: IEvent) => {
+export const getRegisteredEmails = async (): Promise<string[]> => {
+  const dynamicKeys = Object.keys(process.env)
+    .filter((k) => k.startsWith("EMAIL_RECIPIENT_"))
+    .sort();
+  const emails = new Set<string>();
+
+  for (const key of dynamicKeys) {
+    const val = process.env[key]?.trim().toLowerCase();
+    if (val) emails.add(val);
+  }
+
+  // Fallback to explicit env references in case of bundler optimization
+  const fallback = [
+    process.env.EMAIL_RECIPIENT_1,
+    process.env.EMAIL_RECIPIENT_2,
+    process.env.EMAIL_RECIPIENT_3,
+    process.env.EMAIL_RECIPIENT_4,
+    process.env.EMAIL_RECIPIENT_5,
+  ];
+  for (const f of fallback) {
+    if (f?.trim()) emails.add(f.trim().toLowerCase());
+  }
+
+  return Array.from(emails);
+};
+
+interface SendNotificationOptions {
+  event: IEvent;
+  recipients: string[];
+  isUpdate?: boolean;
+}
+
+export const sendEventNotificationEmail = async ({
+  event,
+  recipients,
+  isUpdate = false,
+}: SendNotificationOptions) => {
   const user = process.env.GMAIL_USER;
   const pass = process.env.GMAIL_PASSWORD;
 
@@ -12,14 +48,13 @@ export const sendEventCreatedEmail = async (event: IEvent) => {
     return;
   }
 
-  const recipients = [
-    process.env.EMAIL_RECIPIENT_1,
-    process.env.EMAIL_RECIPIENT_2,
-    process.env.EMAIL_RECIPIENT_3,
-  ].filter(Boolean) as string[];
+  const registered = await getRegisteredEmails();
+  const validRecipients = recipients
+    .map((r) => r.trim().toLowerCase())
+    .filter((r) => registered.includes(r));
 
-  if (recipients.length === 0) {
-    console.warn("No email recipients configured, skipping email send.");
+  if (validRecipients.length === 0) {
+    console.log("No valid email recipients selected, skipping email send.");
     return;
   }
 
@@ -28,15 +63,24 @@ export const sendEventCreatedEmail = async (event: IEvent) => {
     auth: { user, pass },
   });
 
-  const eventUrl = `${process.env.NEXT_PUBLIC_BASE_URL}/events/${event.slug}`;
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
+  const eventUrl = `${baseUrl}/events/${event.slug}`;
+  const subject = isUpdate
+    ? `Event Updated: ${event.title}`
+    : `New Event: ${event.title}`;
 
   try {
     await transporter.sendMail({
       from: `"Events: The Band" <${user}>`,
-      to: recipients,
-      subject: `New Event: ${event.title}`,
+      to: validRecipients,
+      subject,
       html: `
         <h1>${event.title}</h1>
+        ${
+          isUpdate
+            ? '<p style="color:#59deca;font-weight:600;">The event details have been updated:</p>'
+            : ""
+        }
         <p><strong>Type:</strong> ${event.eventType}</p>
         <p><strong>Date:</strong> ${event.date}</p>
         <p><strong>Time:</strong> ${event.time}</p>
@@ -46,8 +90,24 @@ export const sendEventCreatedEmail = async (event: IEvent) => {
         <a href="${eventUrl}" style="background-color:#59deca;color:#000;padding:10px 20px;text-decoration:none;border-radius:6px;font-weight:600;">View Event Details</a>
       `,
     });
-    console.log("Email sent successfully for event:", event.title);
+    console.log(
+      `Email sent successfully to [${validRecipients.join(", ")}] for event:`,
+      event.title,
+    );
   } catch (err) {
-    console.error("Failed to send event creation email:", err);
+    console.error("Failed to send event notification email:", err);
+  }
+};
+
+export const sendEventCreatedEmail = async (
+  event: IEvent,
+  recipients?: string[],
+) => {
+  if (recipients && recipients.length > 0) {
+    return sendEventNotificationEmail({
+      event,
+      recipients,
+      isUpdate: false,
+    });
   }
 };
