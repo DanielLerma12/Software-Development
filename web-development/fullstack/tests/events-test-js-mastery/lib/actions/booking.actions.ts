@@ -2,6 +2,7 @@
 
 import connectDB from "../mongodb";
 import Event from "@/database/event.model";
+import { getRegisteredEmails } from "./email.actions";
 
 const emailRegex =
   /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
@@ -18,12 +19,8 @@ export const createBooking = async ({
 
     const trimmedEmail = email.trim().toLowerCase();
 
-    if (
-      process.env.EMAIL_RECIPIENT_1 !== trimmedEmail &&
-      process.env.EMAIL_RECIPIENT_2 !== trimmedEmail &&
-      process.env.EMAIL_RECIPIENT_3 !== trimmedEmail &&
-      process.env.EMAIL_RECIPIENT_4 !== trimmedEmail
-    ) {
+    const registeredEmails = await getRegisteredEmails();
+    if (!registeredEmails.includes(trimmedEmail)) {
       return { success: false, message: "Email is not in the database" };
     }
 

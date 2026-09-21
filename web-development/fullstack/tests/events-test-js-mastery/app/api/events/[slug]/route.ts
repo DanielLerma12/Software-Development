@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import connectDB from "@/lib/mongodb";
 import Event from "@/database/event.model";
 import { v2 as cloudinary } from "cloudinary";
+import { sendEventNotificationEmail } from "@/lib/actions/email.actions";
 
 export async function DELETE(
   _request: Request,
@@ -139,6 +140,23 @@ export async function PATCH(
         );
       }
       throw err;
+    }
+
+    const recipientsRaw = formData.get("recipients");
+    let recipients: string[] = [];
+    if (typeof recipientsRaw === "string" && recipientsRaw.trim()) {
+      recipients = recipientsRaw
+        .split(",")
+        .map((r) => r.trim().toLowerCase())
+        .filter(Boolean);
+    }
+
+    if (recipients.length > 0) {
+      await sendEventNotificationEmail({
+        event: existing,
+        recipients,
+        isUpdate: true,
+      });
     }
 
     return NextResponse.json({ event: existing }, { status: 200 });

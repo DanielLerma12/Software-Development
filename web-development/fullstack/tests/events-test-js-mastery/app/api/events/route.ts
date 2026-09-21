@@ -2,7 +2,7 @@ import { v2 as cloudinary } from "cloudinary";
 import { NextRequest, NextResponse } from "next/server";
 import connectDB from "@/lib/mongodb";
 import Event from "@/database/event.model";
-import { sendEventCreatedEmail } from "@/lib/actions/email.actions";
+import { sendEventNotificationEmail } from "@/lib/actions/email.actions";
 
 export async function POST(req: NextRequest) {
   try {
@@ -80,9 +80,24 @@ export async function POST(req: NextRequest) {
       image: imageUrl,
     };
 
+    const recipientsRaw = formData.get("recipients");
+    let recipients: string[] = [];
+    if (typeof recipientsRaw === "string" && recipientsRaw.trim()) {
+      recipients = recipientsRaw
+        .split(",")
+        .map((r) => r.trim().toLowerCase())
+        .filter(Boolean);
+    }
+
     const createdEvent = await Event.create(event);
 
-    await sendEventCreatedEmail(createdEvent);
+    if (recipients.length > 0) {
+      await sendEventNotificationEmail({
+        event: createdEvent,
+        recipients,
+        isUpdate: false,
+      });
+    }
 
     return NextResponse.json(
       {

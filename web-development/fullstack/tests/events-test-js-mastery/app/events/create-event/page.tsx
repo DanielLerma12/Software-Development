@@ -63,6 +63,7 @@ const CreateEventPage = () => {
   const [venue, setVenue] = useState("");
   const [image, setImage] = useState<File | string | null>(null);
   const [description, setDescription] = useState("");
+  const [recipients, setRecipients] = useState<string[]>([]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -83,6 +84,7 @@ const CreateEventPage = () => {
       `${startHour}:${startMin} ${startPeriod} to ${endHour}:${endMin} ${endPeriod}`,
     );
     formData.append("venue", venue);
+    formData.append("recipients", recipients.join(","));
     if (image instanceof File) {
       const compressed = await compressImage(image);
       formData.append("image", compressed);
@@ -113,6 +115,7 @@ const CreateEventPage = () => {
         setDescription("");
         setImage(null);
         setEventType([]);
+        setRecipients([]);
         setStartHour("6");
         setStartMin("30");
         setStartPeriod("PM");
@@ -167,6 +170,8 @@ const CreateEventPage = () => {
         setImage={setImage}
         description={description}
         setDescription={setDescription}
+        recipients={recipients}
+        setRecipients={setRecipients}
       />
 
       <Toaster />

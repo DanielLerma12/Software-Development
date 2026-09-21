@@ -110,6 +110,7 @@ const EditEventModal = ({ isOpen, onClose, event }: EditEventModalProps) => {
   const [venue, setVenue] = useState(event.venue);
   const [image, setImage] = useState<File | string | null>(event.image ?? null);
   const [description, setDescription] = useState(event.description);
+  const [recipients, setRecipients] = useState<string[]>([]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -130,6 +131,7 @@ const EditEventModal = ({ isOpen, onClose, event }: EditEventModalProps) => {
       `${startHour}:${startMin} ${startPeriod} to ${endHour}:${endMin} ${endPeriod}`,
     );
     formData.append("venue", venue);
+    formData.append("recipients", recipients.join(","));
     if (image instanceof File) {
       const compressed = await compressImage(image);
       formData.append("image", compressed);
@@ -217,6 +219,8 @@ const EditEventModal = ({ isOpen, onClose, event }: EditEventModalProps) => {
           setImage={setImage}
           description={description}
           setDescription={setDescription}
+          recipients={recipients}
+          setRecipients={setRecipients}
         />
       </div>
     </div>
