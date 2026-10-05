@@ -63,7 +63,14 @@ export const sendEventNotificationEmail = async ({
     auth: { user, pass },
   });
 
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
+  const rawBaseUrl =
+    process.env.NEXT_PUBLIC_BASE_URL ||
+    (process.env.VERCEL_PROJECT_PRODUCTION_URL
+      ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
+      : process.env.VERCEL_URL
+        ? `https://${process.env.VERCEL_URL}`
+        : "http://localhost:3000");
+  const baseUrl = rawBaseUrl.replace(/\/+$/, "");
   const eventUrl = `${baseUrl}/events/${event.slug}`;
   const subject = isUpdate
     ? `Event Updated: ${event.title}`
