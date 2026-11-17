@@ -1,121 +1,167 @@
+<div align="center">
+
 # Software Development
 
-Courses, projects, and reference material from various instructors focused on software development.
+**Mi cuaderno de aprendizaje:** cursos, ejercicios y chuletas de JavaScript, TypeScript, React, Node y todo lo que hay alrededor.
+
+[![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=black)](https://developer.mozilla.org/docs/Web/JavaScript)
+[![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org)
+[![React](https://img.shields.io/badge/React_19-20232A?logo=react&logoColor=61DAFB)](https://react.dev)
+[![Node.js](https://img.shields.io/badge/Node.js-5FA04E?logo=nodedotjs&logoColor=white)](https://nodejs.org)
+[![Next.js](https://img.shields.io/badge/Next.js-000000?logo=nextdotjs&logoColor=white)](https://nextjs.org)
+[![Docker](https://img.shields.io/badge/Docker-2496ED?logo=docker&logoColor=white)](https://www.docker.com)
+
+</div>
 
 ---
 
-## [Languages](languages/)
+## 🗺️ Qué hay aquí
 
-### [JavaScript — Brais Moure](languages/javascript-brais-moure/)
+| | |
+| ---------------------- | ------------------------------------------------------------------------------------------------------------------------- |
+| 🧠 **Languages**       | Cursos de JavaScript y TypeScript, más un reto con un lenguaje esotérico de emojis.                                        |
+| 🌐 **Web Development** | Frontend, backend y fullstack: 15 proyectos de React, una API REST con Prisma, el bootcamp de JSCamp y un curso de Next.js. |
+| ⚙️ **Configs**         | 15 chuletas de referencia: Docker, Git, Prisma, Vite, shadcn, terminal y más.                                              |
+| 🧰 **Scripts**         | Utilidades sueltas, como el corrector de volumen de MP3.                                                                   |
 
-Basic and intermediate course with 50+ practical exercises.
+### Cursos de un vistazo
 
-- **[Basic](languages/javascript-brais-moure/basic/)** — Variables, data types, operators, strings, conditionals, arrays, sets, maps, loops, functions, objects, destructuring, classes, error handling, console methods, modules
-- **[Intermediate](languages/javascript-brais-moure/intermediate/)** — Advanced functions, advanced structures, advanced objects/classes, async/await, APIs, DOM manipulation, debugging, regex, testing
-
-### [TypeScript — Midudev](languages/typescript-midu/)
-
-TypeScript fundamentals: types, generics, type aliases, union/intersection types, interfaces, narrowing, enums, arrays, tuples, assertions.
-
-### [Hand Challenge — Midudev](languages/tests/hand-challenge-test-midu/)
-
-Interpreter for an emoji-based esoteric programming language — pointers, memory, loops.
-
----
-
-## [Web Development](web-development/)
-
-### [Frontend](web-development/frontend/)
-
-#### [React Course — Midudev](web-development/frontend/react-course-midu/)
-
-15 React projects in an npm workspace monorepo, progressing from basics to advanced patterns.
-
-| Project                                                                                                             | Description                | Key Technologies                         |
-| ------------------------------------------------------------------------------------------------------------------- | -------------------------- | ---------------------------------------- |
-| [01 - Twitter Follow Card](web-development/frontend/react-course-midu/projects/01-twitter-follow-card/)             | Component with props       | React, Vite                              |
-| [01b - Calculator](web-development/frontend/react-course-midu/projects/01b-calculator/)                             | Calculator app             | React, Vite, ESLint                      |
-| [02 - Tic Tac Toe](web-development/frontend/react-course-midu/projects/02-tic-tac-toe/)                             | Tic-tac-toe game           | React, Vite                              |
-| [02b - Follow the Square](web-development/frontend/react-course-midu/projects/02b-follow-the-square/)               | Follow-the-square game     | React, Vite, ESLint                      |
-| [03 - Mouse Follower](web-development/frontend/react-course-midu/projects/03-mouse-follower/)                       | Mouse follower effect      | React, Vite                              |
-| [04 - Cat API](web-development/frontend/react-course-midu/projects/04-cat-api/)                                     | Cat API integration        | React, Vite, Playwright                  |
-| [05 - Movie Finder](web-development/frontend/react-course-midu/projects/05-movie-finder/)                           | Movie search app           | React, Vite                              |
-| [06 - Shopping Cart](web-development/frontend/react-course-midu/projects/06-shopping-cart/)                         | Shopping cart              | React, useReducer, Context               |
-| [07 - React Router Fruit Game](web-development/frontend/react-course-midu/projects/07-react-router-fruitgame/)      | Fruit game with routing    | React, React Router                      |
-| [08 - TS Todo App](web-development/frontend/react-course-midu/projects/08-ts-todo-app/)                             | Todo app                   | React, TypeScript, Vite                  |
-| [09 - TS Google Translate Clone](web-development/frontend/react-course-midu/projects/09-ts-google-translate-clone/) | Google Translate clone     | React, TypeScript, External API          |
-| [10 - TS React Query](web-development/frontend/react-course-midu/projects/10-ts-react-query/)                       | Data fetching              | React, TypeScript, React Query           |
-| [10b - TS React Query Mutations](web-development/frontend/react-course-midu/projects/10b-ts-react-query-mutate/)    | Mutations with mock server | React, TypeScript, React Query           |
-| [11 - Zustand JS Quiz](web-development/frontend/react-course-midu/projects/11-zustand-javascript-quiz/)             | Quiz app                   | React, TypeScript, Zustand               |
-| [12 - Zustand CRUD](web-development/frontend/react-course-midu/projects/12-zustand-crud/)                           | CRUD app                   | React, TypeScript, Zustand, Tailwind CSS |
-
-#### Practice
-
-| Project                                                                        | Description                          | Key Technologies       |
-| ------------------------------------------------------------------------------ | ------------------------------------ | ---------------------- |
-| [HTML Course — Midudev](web-development/frontend/tests/html-course-midu/)       | Semantic HTML, meta tags, portfolio  | HTML, CSS              |
-| [Jikan API Test](web-development/frontend/tests/jikanapi-test/)                | Anime search app (Jikan API)         | Vanilla JS, HTML/CSS   |
-| [Tetris](web-development/frontend/tests/tetris-test-midu/)                     | Classic Tetris game                  | Vanilla JS, Vite       |
+| Curso          | Instructor   | Qué cubre                                                      |
+| -------------- | ------------ | -------------------------------------------------------------- |
+| 🟨 JavaScript  | Brais Moure  | Básico e intermedio, con 50+ ejercicios prácticos.             |
+| 🔷 TypeScript  | Midudev      | Tipos, genéricos, aliases, uniones, narrowing, enums.          |
+| ⚛️ React       | Midudev      | 15 proyectos en un monorepo, de las props a Zustand.           |
+| 🟢 Node.js     | Midudev      | Módulos, Express, API REST con Prisma y chat en tiempo real.   |
+| 🚀 JSCamp      | Midudev      | 9 módulos, de HTML y DOM hasta Docker.                         |
+| ▲ Next.js      | JS Mastery   | Next.js 16 con React 19, Tailwind 4 y App Router.              |
 
 ---
 
-### [Backend](web-development/backend/)
+## 🧠 Languages
 
-#### [Node.js Course — Midudev](web-development/backend/nodejs-course-midu/)
+### 🟨 [JavaScript — Brais Moure](languages/javascript-brais-moure/)
 
-| Class                                                                                               | Description                                                                        | Key Technologies                |
-| --------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ------------------------------- |
-| [01–03: Fundamentals](web-development/backend/nodejs-course-midu/class-01-03/)                      | OS info, fs (sync/async/promises), path, HTTP server, Express, routing, validation | Node Modules, Express, Zod      |
-| [04: REST API + Deploy](web-development/backend/nodejs-course-midu/class-04-rest-api-deploy/)       | Full REST API with MVC architecture, Prisma ORM, MySQL/PostgreSQL, CORS            | Express, Prisma, MVC            |
-| [04: REST API Frontend](web-development/backend/nodejs-course-midu/class-04-rest-api-deploy-front/) | Frontend for the REST API                                                          | HTML/CSS/JS                     |
-| [05: Real-time Chat](web-development/backend/nodejs-course-midu/class-05-chat-realtime/)            | Real-time chat app                                                                 | Socket.io, Prisma, JWT, Cookies |
+Curso básico e intermedio con más de 50 ejercicios prácticos.
 
-#### Practice
+- **[Básico](languages/javascript-brais-moure/basic/)** — Variables, tipos de datos, operadores, strings, condicionales, arrays, sets, maps, bucles, funciones, objetos, destructuring, clases, manejo de errores, consola y módulos.
+- **[Intermedio](languages/javascript-brais-moure/intermediate/)** — Funciones y estructuras avanzadas, objetos y clases avanzadas, async/await, APIs, manipulación del DOM, depuración, expresiones regulares y testing.
 
-| Project                                                                                         | Description                                        | Key Technologies     |
-| ----------------------------------------------------------------------------------------------- | -------------------------------------------------- | -------------------- |
-| [Callbacks & Promises Test — Midudev](web-development/backend/tests/callbacks-promises-test-midu/) | 7 exercises: callback-to-promise, file I/O, dotenv, Express CRUD | Node.js, Express     |
+### 🔷 [TypeScript — Midudev](languages/typescript-midu/)
 
----
+Fundamentos de TypeScript: tipos, genéricos, aliases, uniones e intersecciones, interfaces, narrowing, enums, arrays, tuplas y aserciones.
 
-### [Fullstack](web-development/fullstack/)
+### 🎯 [Hand Challenge — Midudev](languages/tests/hand-challenge-test-midu/)
 
-#### [JSCamp Bootcamp — Midudev](web-development/fullstack/jscamp-course-midu/)
-
-Complete 9-module bootcamp covering the full stack.
-
-| Module                                                                                              | Description                                        | Key Technologies                         |
-| --------------------------------------------------------------------------------------------------- | -------------------------------------------------- | ---------------------------------------- |
-| [01: HTML/CSS/JS DOM](web-development/fullstack/jscamp-course-midu/01-html-css-javascript%20dom/)   | HTML/CSS/JS fundamentals, DOM manipulation         | HTML, CSS, JS, Fetch API                 |
-| [02: Router & Zustand](web-development/fullstack/jscamp-course-midu/02-router-and-zustand/)         | Job board app with routing and state management    | React, React Router, Zustand             |
-| [03: Node.js](web-development/fullstack/jscamp-course-midu/03-node/)                                | CLI application, file management                   | Node.js                                  |
-| [04: Express](web-development/fullstack/jscamp-course-midu/04-express/)                             | REST API with MVC architecture                     | Express, MVC                             |
-| [05: Testing](web-development/fullstack/jscamp-course-midu/05-testing/)                             | E2E testing with Playwright and AI-powered testing | Playwright, Stagehand                    |
-| [06: TypeScript](web-development/fullstack/jscamp-course-midu/06-typescript/)                       | TS fundamentals, functions, interfaces & types     | TypeScript                               |
-| [07: AI Integration](web-development/fullstack/jscamp-course-midu/07-inteligencia-artificial/)      | AI-powered features with Google AI SDK             | Google AI SDK, Vercel AI, React, Express |
-| [08: OpenCode](web-development/fullstack/jscamp-course-midu/08-opencode/)                           | Dino Runner game (Canvas + Web Audio API)          | HTML, CSS, JS, Canvas, Web Audio API     |
-| [09: Docker](web-development/fullstack/jscamp-course-midu/09-docker/)                               | 7 progressive exercises: basics to Docker Compose  | Docker, Docker Compose                   |
-
-#### [Next.js Course — JS Mastery](web-development/fullstack/nextjs-course-js-mastery/)
-
-Fullstack Next.js 16 course with React 19, Tailwind CSS 4, and App Router.
-
-#### Practice
-
-| Project                                                                                     | Description                                    | Key Technologies                                  |
-| ------------------------------------------------------------------------------------------- | ---------------------------------------------- | ------------------------------------------------- |
-| [Events App — JS Mastery](web-development/fullstack/tests/events-test-js-mastery/)          | Full-stack events booking app                  | Next.js, MongoDB/Mongoose, Cloudinary, Tailwind CSS |
+Intérprete de un lenguaje de programación esotérico basado en emojis: punteros, memoria y bucles.
 
 ---
 
-## [Configs](configs/)
+## 🌐 Web Development
 
-Reference cheat sheets covering Docker, ESLint, Git/GitHub, monorepo patterns, Next.js, npm/pnpm, OpenCode, Prisma, React Query, React Router, React+Vite, shadcn/ui, terminal commands, and Vite.
+### 🎨 Frontend
+
+#### ⚛️ [React Course — Midudev](web-development/frontend/react-course-midu/)
+
+15 proyectos de React en un monorepo con npm workspaces, de lo básico a patrones avanzados.
+
+| Proyecto                                                                                                             | Descripción                     | Tecnologías clave                        |
+| -------------------------------------------------------------------------------------------------------------------- | ------------------------------- | ---------------------------------------- |
+| [01 - Twitter Follow Card](web-development/frontend/react-course-midu/projects/01-twitter-follow-card/)              | Componente con props            | React, Vite                              |
+| [01b - Calculator](web-development/frontend/react-course-midu/projects/01b-calculator/)                               | Calculadora                     | React, Vite, ESLint                      |
+| [02 - Tic Tac Toe](web-development/frontend/react-course-midu/projects/02-tic-tac-toe/)                               | Tres en raya                    | React, Vite                              |
+| [02b - Follow the Square](web-development/frontend/react-course-midu/projects/02b-follow-the-square/)                 | Juego de seguir el cuadro       | React, Vite, ESLint                      |
+| [03 - Mouse Follower](web-development/frontend/react-course-midu/projects/03-mouse-follower/)                         | Efecto que sigue al ratón       | React, Vite                              |
+| [04 - Cat API](web-development/frontend/react-course-midu/projects/04-cat-api/)                                       | Integración con una API de gatos | React, Vite, Playwright                 |
+| [05 - Movie Finder](web-development/frontend/react-course-midu/projects/05-movie-finder/)                             | Buscador de películas           | React, Vite                              |
+| [06 - Shopping Cart](web-development/frontend/react-course-midu/projects/06-shopping-cart/)                           | Carrito de compra               | React, useReducer, Context               |
+| [07 - React Router Fruit Game](web-development/frontend/react-course-midu/projects/07-react-router-fruitgame/)        | Juego de frutas con rutas       | React, React Router                      |
+| [08 - TS Todo App](web-development/frontend/react-course-midu/projects/08-ts-todo-app/)                               | Lista de tareas                 | React, TypeScript, Vite                  |
+| [09 - TS Google Translate Clone](web-development/frontend/react-course-midu/projects/09-ts-google-translate-clone/)   | Clon de Google Translate        | React, TypeScript, API externa           |
+| [10 - TS React Query](web-development/frontend/react-course-midu/projects/10-ts-react-query/)                         | Obtención de datos              | React, TypeScript, React Query           |
+| [10b - TS React Query Mutations](web-development/frontend/react-course-midu/projects/10b-ts-react-query-mutate/)      | Mutaciones con servidor mock    | React, TypeScript, React Query           |
+| [11 - Zustand JS Quiz](web-development/frontend/react-course-midu/projects/11-zustand-javascript-quiz/)               | Quiz                            | React, TypeScript, Zustand               |
+| [12 - Zustand CRUD](web-development/frontend/react-course-midu/projects/12-zustand-crud/)                            | CRUD                            | React, TypeScript, Zustand, Tailwind CSS |
+
+#### 🧪 Práctica
+
+| Proyecto                                                                 | Descripción                         | Tecnologías clave    |
+| ------------------------------------------------------------------------ | ----------------------------------- | -------------------- |
+| [HTML Course — Midudev](web-development/frontend/tests/html-course-midu/) | HTML semántico, meta tags, portafolio | HTML, CSS          |
+| [Jikan API Test](web-development/frontend/tests/jikanapi-test/)           | Buscador de anime (Jikan API)       | JS vanilla, HTML/CSS |
+| [Tetris](web-development/frontend/tests/tetris-test-midu/)                | El clásico Tetris                   | JS vanilla, Vite     |
 
 ---
 
-## [Scripts](scripts/)
+### 🛠️ Backend
 
-### [MP3Gain Undetected](scripts/mp3gain-undetected-mp3/)
+#### 🟢 [Node.js Course — Midudev](web-development/backend/nodejs-course-midu/)
 
-Node.js utility to check the default target volume (95) of `.mp3` files whose filenames contain symbols that the MP3Gain app does not detect. Uses `ffmpeg-static` for ReplayGain analysis.
+| Clase                                                                                               | Descripción                                                                              | Tecnologías clave               |
+| --------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ------------------------------- |
+| [01–03: Fundamentos](web-development/backend/nodejs-course-midu/class-01-03/)                       | Info del sistema, fs (sync/async/promesas), path, servidor HTTP, Express, rutas y validación | Módulos de Node, Express, Zod |
+| [04: API REST + deploy](web-development/backend/nodejs-course-midu/class-04-rest-api-deploy/)       | API REST completa con arquitectura MVC, Prisma ORM, MySQL/PostgreSQL y CORS               | Express, Prisma, MVC            |
+| [04: API REST frontend](web-development/backend/nodejs-course-midu/class-04-rest-api-deploy-front/) | Frontend para la API REST                                                                 | HTML/CSS/JS                     |
+| [05: Chat en tiempo real](web-development/backend/nodejs-course-midu/class-05-chat-realtime/)       | Chat en tiempo real                                                                       | Socket.io, Prisma, JWT, cookies |
+
+#### 🧪 Práctica
+
+| Proyecto                                                                                         | Descripción                                                              | Tecnologías clave |
+| ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ----------------- |
+| [Callbacks & Promises Test — Midudev](web-development/backend/tests/callbacks-promises-test-midu/) | 7 ejercicios: callback a promesa, file I/O, dotenv y un CRUD con Express | Node.js, Express  |
+
+---
+
+### 🚀 Fullstack
+
+#### 🏕️ [JSCamp Bootcamp — Midudev](web-development/fullstack/jscamp-course-midu/)
+
+Bootcamp completo de 9 módulos que cubre todo el stack.
+
+| Módulo                                                                                              | Descripción                                            | Tecnologías clave                        |
+| --------------------------------------------------------------------------------------------------- | ------------------------------------------------------ | ---------------------------------------- |
+| [01: HTML/CSS/JS DOM](web-development/fullstack/jscamp-course-midu/01-html-css-javascript%20dom/)   | Fundamentos de HTML/CSS/JS y manipulación del DOM      | HTML, CSS, JS, Fetch API                 |
+| [02: Router y Zustand](web-development/fullstack/jscamp-course-midu/02-router-and-zustand/)         | Bolsa de empleo con rutas y estado global              | React, React Router, Zustand             |
+| [03: Node.js](web-development/fullstack/jscamp-course-midu/03-node/)                                | Aplicación de CLI y gestión de archivos                | Node.js                                  |
+| [04: Express](web-development/fullstack/jscamp-course-midu/04-express/)                             | API REST con arquitectura MVC                          | Express, MVC                             |
+| [05: Testing](web-development/fullstack/jscamp-course-midu/05-testing/)                             | Testing E2E y testing asistido por IA                  | Playwright, Stagehand                    |
+| [06: TypeScript](web-development/fullstack/jscamp-course-midu/06-typescript/)                       | Fundamentos de TS, funciones, interfaces y tipos       | TypeScript                               |
+| [07: Inteligencia artificial](web-development/fullstack/jscamp-course-midu/07-inteligencia-artificial/) | Funciones con IA usando el SDK de Google            | Google AI SDK, Vercel AI, React, Express |
+| [08: OpenCode](web-development/fullstack/jscamp-course-midu/08-opencode/)                           | Juego Dino Runner (Canvas + Web Audio API)             | HTML, CSS, JS, Canvas, Web Audio API     |
+| [09: Docker](web-development/fullstack/jscamp-course-midu/09-docker/)                               | 7 ejercicios progresivos: de lo básico a Docker Compose | Docker, Docker Compose                  |
+
+#### ▲ [Next.js Course — JS Mastery](web-development/fullstack/nextjs-course-js-mastery/)
+
+Curso fullstack de Next.js 16 con React 19, Tailwind CSS 4 y App Router.
+
+#### 🧪 Práctica
+
+| Proyecto                                                                             | Descripción                       | Tecnologías clave                                    |
+| ------------------------------------------------------------------------------------ | --------------------------------- | ---------------------------------------------------- |
+| [Events App — JS Mastery](web-development/fullstack/tests/events-test-js-mastery/)   | App de reserva de eventos fullstack | Next.js, MongoDB/Mongoose, Cloudinary, Tailwind CSS |
+
+---
+
+## ⚙️ Configs
+
+Chuletas de referencia rápida:
+
+[Docker](configs/docker.txt) · [ESLint](configs/eslint.txt) · [General](configs/general.txt) · [Git y GitHub](configs/git-github.txt) · [Monorepos](configs/monorepo.txt) · [Next.js](configs/nextjs.txt) · [npm y pnpm](configs/npm-pnpm.txt) · [OpenCode](configs/opencode.txt) · [Prisma](configs/prisma.txt) · [React Query](configs/react-query.txt) · [React Router](configs/react-router.txt) · [React + Vite](configs/react-vite.txt) · [shadcn/ui](configs/shadcn.txt) · [Comandos de terminal](configs/terminal-commands.txt) · [Vite](configs/vite.txt)
+
+---
+
+## 🧰 Scripts
+
+### 🎵 [MP3Gain Undetected](scripts/mp3gain-undetected-mp3/)
+
+Utilidad en Node.js que comprueba el volumen objetivo por defecto (95) de los archivos `.mp3` cuyos nombres contienen símbolos que la app de MP3Gain no detecta. Usa `ffmpeg-static` para el análisis de ReplayGain.
+
+---
+
+## 📁 Estructura
+
+```text
+languages/        cursos de lenguajes y retos
+web-development/  frontend, backend y fullstack
+configs/          chuletas de referencia
+scripts/          utilidades sueltas
+```
